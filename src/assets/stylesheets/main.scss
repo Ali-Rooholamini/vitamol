@@ -1,0 +1,32 @@
+:root {
+    direction: rtl;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    direction: rtl;
+    font-family: PeydaWeb;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  a {
+    text-decoration: none;
+  
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 0 !important;
+}
