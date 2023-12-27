@@ -125,6 +125,7 @@
 
 <script>
 import OffCanvasMenu from "../common/OffCanvasMenu.vue";
+
 export default {
   name: "TheHeader",
 
@@ -166,7 +167,7 @@ export default {
 <style lang="scss" scoped>
 header {
   transition: 230ms ease-in;
-  background-color: black;
+  background-color: transparent;
 }
 
 header.sticky-menu {
