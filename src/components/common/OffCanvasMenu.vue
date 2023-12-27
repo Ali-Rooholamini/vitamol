@@ -19,29 +19,60 @@
         </div>
         <div class="menu-content">
           <NuxtLink
-            class="menu-link active"
+            class="menu-link"
+            :class="{ active: currentPath === 'index' }"
             aria-current="page"
             to="/"
             @click="toggleOffcanvas"
           >
             ویتامول
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'car' }"
+            to="/"
+            @click="toggleOffcanvas"
+          >
             محصولات
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'delegate' }"
+            to="/"
+            @click="toggleOffcanvas"
+          >
             نمایندگی
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'order' }"
+            to="/"
+            @click="toggleOffcanvas"
+          >
             ثبت سفارش
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/blog" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'blog' }"
+            to="/blog"
+            @click="toggleOffcanvas"
+          >
             وبلاگ
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'aboutus' }"
+            to="/"
+            @click="toggleOffcanvas"
+          >
             درباره ما
           </NuxtLink>
-          <NuxtLink class="menu-link" to="/" @click="toggleOffcanvas">
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === 'contant-us' }"
+            to="/"
+            @click="toggleOffcanvas"
+          >
             تماس با ما
           </NuxtLink>
         </div>
@@ -52,6 +83,13 @@
 
 <script>
 export default {
+  props: {
+    currentPath: {
+      type: String,
+      required: true,
+    },
+  },
+
   data() {
     return {
       isOpen: false,
@@ -78,13 +116,17 @@ export default {
   }
 }
 
+.active {
+  color: #0958d6 !important;
+}
+
 .offcanvas-menu {
   position: fixed;
   top: 0;
   right: 0px;
   width: 300px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--secondary-light-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: right 0.3s ease-in-out;
@@ -104,7 +146,6 @@ export default {
   cursor: pointer;
   border: none;
   background: none;
-  font-size: 16px;
 }
 
 .close-menu-button {
@@ -117,10 +158,17 @@ export default {
 
 .menu-link {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 17px;
+  padding-top: 17px;
   text-decoration: none;
   color: #333;
-  font-size: 16px;
+  font-size: 20px;
+  border-bottom: 1px solid #bfbfbf;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .menu-content {

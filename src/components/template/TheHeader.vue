@@ -6,10 +6,7 @@
     <nav class="container-xl navbar bg-body-tertiary">
       <div class="w-100 d-flex justify-content-between align-items-center">
         <!-- offcanvas display button -->
-        <OffCanvasMenu
-          :is-menu-open="isOffcanvsOpen"
-          @closeOffcanvas="!isOffcanvsOpen"
-        />
+        <OffCanvasMenu :currentPath="currentPath" />
 
         <!-- vitamol brand logo -->
         <div>
@@ -25,29 +22,75 @@
         </div>
 
         <!-- vitamol navbar -->
-        <ul class="nav d-none d-lg-flex">
+        <ul ref="navbarLinks" class="nav d-none d-lg-flex">
           <li class="nav-item">
-            <NuxtLink class="nav-link active" aria-current="page" to="/">
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'index' }"
+              to="/"
+              @click="setActivePage"
+            >
               ویتامول
             </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> محصولات </NuxtLink>
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'cat' }"
+              to="/"
+              @click="setActivePage"
+            >
+              محصولات
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> نمایندگی </NuxtLink>
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'delegate' }"
+              to="/"
+              @click="setActivePage"
+            >
+              نمایندگی
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> ثبت سفارش </NuxtLink>
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'order' }"
+              to="/"
+              @click="setActivePage"
+            >
+              ثبت سفارش
+            </NuxtLink>
+          </li>
+          <li class="nav-item" @click="setActivePage">
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'blog' }"
+              to="/blog"
+            >
+              وبلاگ
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> وبلاگ </NuxtLink>
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'aboutus' }"
+              to="/"
+              @click="setActivePage"
+            >
+              درباره ما
+            </NuxtLink>
           </li>
           <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> درباره ما </NuxtLink>
-          </li>
-          <li class="nav-item">
-            <NuxtLink class="nav-link" to="/"> تماس با ما </NuxtLink>
+            <NuxtLink
+              class="nav-link"
+              :class="{ active: currentPath === 'contact-us' }"
+              to="/"
+              @click="setActivePage"
+            >
+              تماس با ما
+            </NuxtLink>
           </li>
         </ul>
 
@@ -79,7 +122,7 @@ export default {
   data() {
     return {
       isSticky: false,
-      isOffcanvsOpen: false,
+      currentPath: "index",
     };
   },
 
@@ -87,13 +130,25 @@ export default {
     if (process.client) {
       window.addEventListener("scroll", this.handleScroll);
     }
+  },
 
-    console.dir(this.$refs.offCanvasNavbar);
+  watch: {
+    $route(to) {
+      this.currentPath = to.name;
+    },
   },
 
   methods: {
     handleScroll() {
       this.isSticky = window.scrollY > 20;
+    },
+
+    setActivePage(event) {
+      if (!event.target.classList.contains("active")) {
+        const linksWrapperElement = this.$refs.navbarLinks;
+        linksWrapperElement.querySelector(".active").classList.remove("active");
+        event.target.classList.add("active");
+      }
     },
   },
 
