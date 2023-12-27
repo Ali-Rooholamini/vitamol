@@ -27,14 +27,39 @@
           >
             ویتامول
           </NuxtLink>
-          <NuxtLink
-            class="menu-link"
-            :class="{ active: currentPath === 'car' }"
-            to="/"
-            @click="toggleOffcanvas"
-          >
-            محصولات
-          </NuxtLink>
+          <div class="dropdown-wrapper">
+            <a
+              class="menu-dropdown"
+              :class="{ active: currentPath === 'cat' }"
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              محصولات
+            </a>
+            <div class="collapse" id="collapseExample">
+              <ul class="nav">
+                <li class="nav-item">
+                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                    محصولات مراقبت از مو
+                  </NuxtLink>
+                </li>
+                <li class="nav-item">
+                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                    محصولات مراقبت از پوست
+                  </NuxtLink>
+                </li>
+                <li class="nav-item">
+                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                    رنگ مو
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <NuxtLink
             class="menu-link"
             :class="{ active: currentPath === 'delegate' }"
@@ -156,14 +181,23 @@ export default {
   margin-bottom: 10px;
 }
 
+.menu-dropdown,
 .menu-link {
   display: block;
   margin-bottom: 0px;
-  padding-bottom: 17px;
   padding-top: 17px;
   text-decoration: none;
   color: #333;
   font-size: 20px;
+}
+
+.dropdown-wrapper {
+  padding-bottom: 17px;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.menu-link {
+  padding-bottom: 17px;
   border-bottom: 1px solid #bfbfbf;
 
   &:last-child {

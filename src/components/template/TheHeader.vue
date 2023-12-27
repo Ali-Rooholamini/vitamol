@@ -28,27 +28,43 @@
               class="nav-link"
               :class="{ active: currentPath === 'index' }"
               to="/"
-              @click="setActivePage"
             >
               ویتامول
             </NuxtLink>
           </li>
-          <li class="nav-item">
-            <NuxtLink
+
+          <li class="nav-item dropdown">
+            <a
               class="nav-link"
               :class="{ active: currentPath === 'cat' }"
-              to="/"
-              @click="setActivePage"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
             >
               محصولات
-            </NuxtLink>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <NuxtLink class="nav-link" to="/">
+                  محصولات مراقبت از مو
+                </NuxtLink>
+              </li>
+              <li>
+                <NuxtLink class="nav-link" to="/">
+                  محصولات مراقبت از پوست
+                </NuxtLink>
+              </li>
+              <li>
+                <NuxtLink class="nav-link" to="/"> رنگ مو </NuxtLink>
+              </li>
+            </ul>
           </li>
+
           <li class="nav-item">
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'delegate' }"
               to="/"
-              @click="setActivePage"
             >
               نمایندگی
             </NuxtLink>
@@ -58,12 +74,11 @@
               class="nav-link"
               :class="{ active: currentPath === 'order' }"
               to="/"
-              @click="setActivePage"
             >
               ثبت سفارش
             </NuxtLink>
           </li>
-          <li class="nav-item" @click="setActivePage">
+          <li class="nav-item">
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'blog' }"
@@ -77,7 +92,6 @@
               class="nav-link"
               :class="{ active: currentPath === 'aboutus' }"
               to="/"
-              @click="setActivePage"
             >
               درباره ما
             </NuxtLink>
@@ -87,7 +101,6 @@
               class="nav-link"
               :class="{ active: currentPath === 'contact-us' }"
               to="/"
-              @click="setActivePage"
             >
               تماس با ما
             </NuxtLink>
@@ -142,14 +155,6 @@ export default {
     handleScroll() {
       this.isSticky = window.scrollY > 20;
     },
-
-    setActivePage(event) {
-      if (!event.target.classList.contains("active")) {
-        const linksWrapperElement = this.$refs.navbarLinks;
-        linksWrapperElement.querySelector(".active").classList.remove("active");
-        event.target.classList.add("active");
-      }
-    },
   },
 
   unmounted() {
@@ -176,6 +181,23 @@ header.sticky-menu {
   @include breakpoint-up(sm) {
     width: 238px;
     height: 33px;
+  }
+}
+
+.dropdown {
+  button {
+    color: var(--color-white) !important;
+  }
+
+  .dropdown-menu {
+    text-align: right;
+    right: 0 !important;
+    left: initial;
+
+    > li .nav-link:hover {
+      background-color: #002561 !important;
+      color: white !important;
+    }
   }
 }
 
