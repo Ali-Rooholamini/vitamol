@@ -15,7 +15,7 @@
               class="header_brand-logo"
               width="238"
               height="33"
-              src="~/public/images/vitamol-brand.png"
+              src="/images/vitamol-brand.png"
               alt="vitamol"
             />
           </NuxtLink>
@@ -257,7 +257,7 @@ header.sticky-menu {
       border-radius: 50px;
       background-color: var(--color-white);
       color: var(--secondary-color);
-      box-shadow: 0 10px 50px -5px hsla(0, 0, 0, 25%);
+      box-shadow: 0 10px 50px -5px rgba(0, 0, 0, 25%);
 
       @include breakpoint-down(lg) {
         width: 40px;
