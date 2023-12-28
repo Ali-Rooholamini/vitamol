@@ -135,7 +135,7 @@ export default {
   outline: none;
   border: none;
 
-  > .nuxt-icon ::v-deep svg {
+  > .nuxt-icon :deep(svg) {
     width: 27px;
     height: 22px;
   }
