@@ -1,8 +1,8 @@
 <template>
   <div class="landing-header">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-6 landing-header_right-section">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-6 landing-header_right-section">
           <p>شما لایق بهترین‌ها هستید.</p>
           <div class="landing-header_right-section_brand">
             <h1>ویتامول</h1>
@@ -51,35 +51,75 @@ export default {
 
 .landing-header_right-section {
   color: var(--secondary-color);
+
   > p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: normal;
     margin-bottom: 8px;
+
+    @include breakpoint-up(md) {
+      font-size: 18px;
+    }
+
+    @include breakpoint-up(lg) {
+      font-size: 20px;
+    }
   }
 
   .landing-header_right-section_brand {
-    width: 100%;
-    max-width: 404px;
+    width: calc(100% - 20px);
     position: relative;
-    margin-bottom: 36px;
+    margin-bottom: 20px;
+
+    @include breakpoint-up(md) {
+      width: 100%;
+      max-width: 364px;
+      margin-bottom: 20px;
+    }
+
+    @include breakpoint-up(lg) {
+      width: 100%;
+      max-width: 404px;
+      margin-bottom: 36px;
+    }
 
     h1 {
       font-family: PeydaWeb;
-      font-size: 92px;
+      font-size: 62px;
       font-weight: bold;
       writing-mode: horizontal-tb;
       letter-spacing: 1px;
+
+      @include breakpoint-up(md) {
+        font-size: 72px;
+      }
+
+      @include breakpoint-up(lg) {
+        font-size: 92px;
+      }
     }
 
     > p {
       text-align: right;
       color: var(--text-color);
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
-      line-height: 26px;
+      line-height: 20px;
       margin-bottom: 0px;
       margin-top: 19px;
+
+      @include breakpoint-up(md) {
+        font-size: 18px;
+        line-height: 26px;
+        margin-top: 19px;
+      }
+
+      @include breakpoint-up(lg) {
+        font-size: 20px;
+        line-height: 26px;
+        margin-top: 19px;
+      }
     }
 
     img {
