@@ -168,6 +168,7 @@ export default {
 header {
   transition: 230ms ease-in;
   background-color: transparent;
+  font-family: PeydaWeb;
 }
 
 header.sticky-menu {

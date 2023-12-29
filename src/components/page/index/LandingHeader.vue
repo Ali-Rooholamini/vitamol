@@ -65,6 +65,7 @@ export default {
     margin-bottom: 36px;
 
     h1 {
+      font-family: PeydaWeb;
       font-size: 92px;
       font-weight: bold;
       writing-mode: horizontal-tb;
@@ -86,7 +87,7 @@ export default {
       height: 113px;
       position: absolute;
       top: -70px;
-      left: -35px;
+      left: -25px;
     }
   }
 }
