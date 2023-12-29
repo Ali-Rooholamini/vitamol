@@ -5,7 +5,7 @@
       type="button"
       @click="toggleOffcanvas"
     >
-      <nuxt-icon name="vit-toggle-menu" filled />
+      <nuxt-icon name="vit--toggle-menu" filled />
     </button>
 
     <transition name="offcanvas-transition">

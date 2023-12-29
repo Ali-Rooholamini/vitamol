@@ -110,11 +110,11 @@
         <!-- login and serach buttons -->
         <div class="header_btn-wrapper">
           <button class="btn me-2 mb-1" type="button">
-            <nuxt-icon class="header_btn-search" name="vit-search" filled />
+            <nuxt-icon class="header_btn-search" name="vit--search" filled />
             <span class="d-none d-lg-inline-block">جست و جو</span>
           </button>
           <button class="btn me-2 login mb-1" type="button">
-            <nuxt-icon name="vit-profile" filled />
+            <nuxt-icon name="vit--profile" filled />
             <span class="d-none d-lg-inline-block">ثبت نام</span>
           </button>
         </div>

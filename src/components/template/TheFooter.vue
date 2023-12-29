@@ -1,5 +1,5 @@
 <template>
-  <footer class="container-fluid fixed-bottom">
+  <footer class="container-fluid">
     <div class="container">
       <div class="footer_brand-images-wrapper">
         <img
