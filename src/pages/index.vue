@@ -7,6 +7,15 @@
       <h1>چرا <span>ویتـــــامـول</span> ؟</h1>
       <FeaturedAdvantages :featuredList="featuredAdvantagesList" />
     </section>
+    <div class="landing_brand-logo text-center">
+      <img
+        src="/images/vitamol-brand-2.png"
+        width="742"
+        height="107"
+        alt="ویتامول"
+        loading="lazy"
+      />
+    </div>
   </div>
 </template>
 
@@ -99,6 +108,32 @@ export default {
       font-family: PeydaWeb;
       padding: 0px 10px;
       font-weight: bold;
+    }
+  }
+}
+
+.landing_brand-logo {
+  margin-bottom: 62px;
+
+  @include breakpoint-up(md) {
+    margin-bottom: 124px;
+  }
+
+  > img {
+    width: 260px;
+    height: auto;
+
+    @include breakpoint-up(sm) {
+      width: 342px;
+      height: auto;
+    }
+    @include breakpoint-up(md) {
+      width: 542px;
+      height: auto;
+    }
+    @include breakpoint-up(lg) {
+      width: 742px;
+      height: 107px;
     }
   }
 }
