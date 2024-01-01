@@ -16,18 +16,23 @@
         loading="lazy"
       />
     </div>
+    <section class="landing_categories">
+      <LandingCategories />
+    </section>
   </div>
 </template>
 
 <script>
 import LandingHeader from "~/components/page/index/LandingHeader.vue";
 import FeaturedAdvantages from "~/components/common/FeaturedAdvantages.vue";
+import LandingCategories from "~/components/page/index/LandingCategories.vue";
 
 export default {
   name: "IndexPage",
   components: {
     LandingHeader,
     FeaturedAdvantages,
+    LandingCategories,
   },
   computed: {
     featuredAdvantagesList() {
@@ -136,5 +141,9 @@ export default {
       height: 107px;
     }
   }
+}
+
+.landing_categories {
+  margin-bottom: 140px;
 }
 </style>

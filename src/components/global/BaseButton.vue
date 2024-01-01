@@ -1,8 +1,8 @@
 <template>
   <button class="base-button" type="button">
-    <nuxt-icon v-if="isSvgRight" :name="svgPath" />
+    <nuxt-icon class="is-right" v-if="isSvgRight" :name="svgPath" />
     <slot />
-    <nuxt-icon v-if="isSvgLeft" :name="svgPath" />
+    <nuxt-icon class="is-left" v-if="isSvgLeft" :name="svgPath" />
   </button>
 </template>
 
@@ -69,11 +69,17 @@ export default {
   }
 
   .nuxt-icon {
-    margin-right: 12px;
     :deep(svg) {
       width: 24px;
       height: 24px;
     }
+  }
+
+  .nuxt-icon.is-left {
+    margin-right: 12px;
+  }
+  .nuxt-icon.is-right {
+    margin-left: 12px;
   }
 }
 </style>
