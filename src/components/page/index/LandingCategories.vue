@@ -1,7 +1,9 @@
 <template>
   <div class="landing-categories">
     <div class="landing-categories_category-wrapper">
-      <div class="container d-flex justify-content-between align-items-center">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center"
+      >
         <div class="landing-categories_image-wrapper">
           <img
             width="306"
@@ -30,10 +32,12 @@
               :isSvgRight="true"
               arrowSvgName="vit--arrow-right-top"
             >
-              نمایش محصولات
+              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
-          <div class="landing-categories_category-left-side_cream">
+          <div
+            class="d-none d-md-block landing-categories_category-left-side_cream"
+          >
             <img
               width="164"
               height="179"
@@ -46,9 +50,10 @@
         </div>
       </div>
     </div>
+
     <div class="landing-categories_category-wrapper">
       <div
-        class="container d-flex justify-content-between align-items-center flex-row-reverse"
+        class="container d-flex flex-column flex-md-row-reverse justify-content-center justify-content-md-between align-items-center"
       >
         <div class="landing-categories_image-wrapper">
           <img
@@ -76,11 +81,11 @@
               </p>
             </div>
             <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
-              نمایش محصولات
+              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
           <div
-            class="landing-categories_category-left-side_backcolor middle-cat"
+            class="d-none d-md-flex landing-categories_category-left-side_backcolor middle-cat"
           >
             <img
               src="~/assets/images/cream-sample.webp"
@@ -91,14 +96,17 @@
         </div>
       </div>
     </div>
+
     <div class="landing-categories_category-wrapper">
-      <div class="container d-flex justify-content-between align-items-center">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center"
+      >
         <div class="landing-categories_image-wrapper">
           <img
             width="306"
             height="430"
             src="~/assets/images/header-image.png"
-            alt="محصولات رنگ مو"
+            alt="محصولات مراقبت از مو"
             loading="lazy"
           />
           <div class="landing-categories_image-backcolor"></div>
@@ -116,12 +124,20 @@
                 ایران
               </p>
             </div>
-            <BaseButton :isSvgRight="true" arrowSvgName="vit--arrow-right-top">
-              نمایش محصولات
+            <BaseButton
+              class="landing-categories_category-left-side_button"
+              :isSvgRight="true"
+              arrowSvgName="vit--arrow-right-top"
+            >
+              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
-          <div class="landing-categories_category-left-side_cream">
+          <div
+            class="d-none d-md-block landing-categories_category-left-side_cream"
+          >
             <img
+              width="164"
+              height="179"
               src="~/assets/images/cream-sample.webp"
               alt="کرم-ویتامول"
               loading="lazy"
@@ -152,8 +168,6 @@ export default {
   }
 
   .container {
-    // gap: 160px;
-
     @include breakpoint-up(md) {
       gap: 50px;
     }
@@ -169,10 +183,16 @@ export default {
 }
 
 .landing-categories_image-wrapper {
-  margin-right: 26px;
+  text-align: center;
   position: relative;
 
+  @include breakpoint-up(md) {
+    margin-right: 26px;
+  }
+
   img {
+    width: 90%;
+    height: auto;
     border-radius: 32px;
     box-shadow: 0px 10px 50px -5px #00000040;
 
@@ -222,7 +242,6 @@ export default {
 
   .landing-categories_image-backcolor.middle-cat {
     right: initial;
-    left: -38px;
     background: linear-gradient(
       196deg,
       #83affe -11.39%,
@@ -244,11 +263,11 @@ export default {
 
   .landing-categories_image-title-backcolor {
     position: absolute;
-    top: 40px;
-    right: calc(100% - 123px);
+    top: calc(100% + 35px);
+    right: 0px;
     z-index: -2;
-    width: 573px;
-    height: 73px;
+    width: 100%;
+    height: 45px;
     border-radius: 8px;
     background: linear-gradient(
       270deg,
@@ -258,6 +277,7 @@ export default {
     box-shadow: 0px 10px 50px -5px rgba(0, 0, 0, 0.25);
 
     @include breakpoint-up(md) {
+      top: 40px !important;
       width: 303px;
       height: 35px;
       right: calc(100% - 83px);
@@ -275,9 +295,9 @@ export default {
   }
 
   .landing-categories_image-title-backcolor.middle-cat {
-    width: 852px !important;
+    width: 100%;
     right: initial;
-    left: calc(100% - 124px) !important;
+    left: 0px !important;
     background: linear-gradient(96deg, #83affe -11.39%, #fff 69.89%) !important;
 
     @include breakpoint-up(md) {
@@ -299,14 +319,12 @@ export default {
 }
 
 .landing-categories_category-left-side {
-  //   margin-left: 23%;
   display: flex;
   justify-content: space-between;
   width: 100%;
 
   .landing-categories_category-left-side_text {
     margin-top: 32px;
-    height: 394px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -324,14 +342,19 @@ export default {
     }
 
     strong {
-      font-size: 32px;
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      margin-right: 10px;
       font-weight: 600;
       line-height: normal;
-      margin-top: 15px;
+      margin-top: 13px;
       white-space: nowrap;
 
       @include breakpoint-up(md) {
+        text-align: right;
         margin-top: 23px;
+        margin-right: 0px;
         font-size: 20px;
       }
       @include breakpoint-up(lg) {
@@ -343,11 +366,13 @@ export default {
     }
 
     h3 {
-      font-size: 28px;
+      font-size: 18px;
       font-weight: 500;
       line-height: normal;
+      margin-top: 35px;
 
       @include breakpoint-up(md) {
+        margin-top: 0px;
         font-size: 18px;
       }
       @include breakpoint-up(lg) {
@@ -360,15 +385,16 @@ export default {
 
     > div p {
       color: var(--text-color);
-      width: 404px;
-      font-size: 22px;
+      font-size: 16px;
       line-height: 26.77px;
       font-weight: 400;
+      text-align: justify;
 
       @include breakpoint-up(md) {
         font-size: 16px;
         width: 304px;
         line-height: 20.77px;
+        text-align: initial;
       }
       @include breakpoint-up(lg) {
         width: 360px;
@@ -425,20 +451,23 @@ export default {
   }
 
   .landing-categories_category-left-side_backcolor {
+    display: none;
     position: absolute;
-    z-index: -2;
+    z-index: -3;
     left: 0px;
-    top: 145px;
-    width: 609px;
-    height: 186px;
-    border-radius: 0px 12px 12px 0px;
+    top: 550px;
+    width: 100%;
+    height: 210px;
+    border-radius: 0px;
     box-shadow: 0px 10px 50px -5px rgba(0, 0, 0, 0.25);
     background-color: var(--primary-color);
 
     @include breakpoint-up(md) {
+      display: block;
       top: 95px;
       width: 389px;
       height: 126px;
+      border-radius: 0px 12px 12px 0px;
     }
     @include breakpoint-up(lg) {
       top: 110px;
