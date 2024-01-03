@@ -19,6 +19,10 @@
     <section class="landing_categories">
       <LandingCategories />
     </section>
+
+    <section class="landing_delegates">
+      <LandingDeputize />
+    </section>
   </div>
 </template>
 
@@ -26,6 +30,7 @@
 import LandingHeader from "~/components/page/index/LandingHeader.vue";
 import FeaturedAdvantages from "~/components/common/FeaturedAdvantages.vue";
 import LandingCategories from "~/components/page/index/LandingCategories.vue";
+import LandingDeputize from "~/components/page/index/LandingDeputize.vue";
 
 export default {
   name: "IndexPage",
@@ -33,6 +38,7 @@ export default {
     LandingHeader,
     FeaturedAdvantages,
     LandingCategories,
+    LandingDeputize,
   },
   computed: {
     featuredAdvantagesList() {
@@ -145,5 +151,9 @@ export default {
 
 .landing_categories {
   margin-bottom: 140px;
+}
+
+.landing_delegates {
+  margin-bottom: 100px;
 }
 </style>

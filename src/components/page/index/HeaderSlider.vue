@@ -1,10 +1,6 @@
 <template>
   <div class="header-slider">
-    <img
-      src="~/assets/images/header-image.png"
-      alt="مراقبت از پوست"
-      loading="lazy"
-    />
+    <img src="~/assets/images/header-image.png" alt="مراقبت از پوست" />
     <div class="header-slider_bottom-left-design">
       <svg
         width="100"
