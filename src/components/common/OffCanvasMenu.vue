@@ -191,6 +191,10 @@ export default {
   font-size: 20px;
 }
 
+.nav-item > .nav-link {
+  color: black;
+}
+
 .dropdown-wrapper {
   padding-bottom: 17px;
   border-bottom: 1px solid #bfbfbf;

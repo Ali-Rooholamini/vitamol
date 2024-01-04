@@ -196,9 +196,13 @@ header.sticky-menu {
     right: 0 !important;
     left: initial;
 
-    > li .nav-link:hover {
-      background-color: #002561 !important;
-      color: white !important;
+    > li .nav-link {
+      color: black;
+
+      &:hover {
+        background-color: #002561 !important;
+        color: white !important;
+      }
     }
   }
 }
