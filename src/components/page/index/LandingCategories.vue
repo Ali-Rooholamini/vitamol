@@ -5,10 +5,11 @@
         class="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center"
       >
         <div class="landing-categories_image-wrapper">
-          <img
+          <NuxtImg
             width="306"
             height="430"
-            src="~/assets/images/header-image.png"
+            src="images/header-image.png"
+            format="webp"
             alt="محصولات مراقبت از مو"
             loading="lazy"
           />
@@ -56,10 +57,11 @@
         class="container d-flex flex-column flex-md-row-reverse justify-content-center justify-content-md-between align-items-center"
       >
         <div class="landing-categories_image-wrapper">
-          <img
+          <NuxtImg
             width="306"
             height="430"
-            src="~/assets/images/header-image.png"
+            src="images/header-image.png"
+            format="webp"
             alt="محصولات مراقبت از پوست"
             loading="lazy"
           />
@@ -102,10 +104,11 @@
         class="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center"
       >
         <div class="landing-categories_image-wrapper">
-          <img
+          <NuxtImg
             width="306"
             height="430"
-            src="~/assets/images/header-image.png"
+            src="images/header-image.png"
+            format="webp"
             alt="محصولات مراقبت از مو"
             loading="lazy"
           />

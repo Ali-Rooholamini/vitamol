@@ -8,7 +8,21 @@ export default defineNuxtConfig({
     dirs : [],
   },
 
-  modules : ["nuxt-icons"],
+  modules : ["nuxt-icons" , '@nuxt/image'],
+
+  image : {
+    quality : 80,
+    format : ["webp , avif" , "jpeg"],
+    screens: {
+      'xs': 320,
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      'xxl': 1536,
+      '2xl': 1536
+    },
+  },
 
   css: [
     "~/assets/stylesheets/scss/_fonts.scss",

@@ -8,7 +8,7 @@
       <FeaturedAdvantages :featuredList="featuredAdvantagesList" />
     </section>
     <div class="landing_brand-logo text-center">
-      <img
+      <NuxtImg
         src="/images/vitamol-brand-2.png"
         width="742"
         height="107"

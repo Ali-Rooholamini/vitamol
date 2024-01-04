@@ -4,7 +4,7 @@
       <p>برای اعطای نمایندگی ویتامول با ما در ارتباط باشید!</p>
     </div>
     <div class="deputize_button-wrapper">
-      <img
+      <NuxtImg
         width="422"
         height="61"
         src="/images/vitamol-brand-2.png"

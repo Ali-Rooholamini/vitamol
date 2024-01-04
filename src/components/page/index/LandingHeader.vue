@@ -12,7 +12,11 @@
               پوست و مو در ایران بهترین برند محصولات مراقبت از پوست و مو در
               ایران
             </p>
-            <img src="/images/vit-butterfly.png" alt="ویتامول" />
+            <NuxtImg
+              src="images/vit-butterfly.png"
+              format="webp"
+              alt="ویتامول"
+            />
           </div>
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top"
             >درباره ویتامول</BaseButton

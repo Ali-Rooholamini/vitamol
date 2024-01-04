@@ -2,13 +2,13 @@
   <footer class="container-fluid">
     <div class="container">
       <div class="footer_brand-images-wrapper">
-        <img
+        <NuxtImg
           width="110"
           height="31"
           src="/images/vitamol-brand-farsi.png"
           alt="ویتامول"
         />
-        <img
+        <NuxtImg
           width="145"
           height="31"
           src="/images/vitamol-brand-footer.png"

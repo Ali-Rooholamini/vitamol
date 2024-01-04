@@ -11,7 +11,7 @@
         <!-- vitamol brand logo -->
         <div>
           <NuxtLink class="navbar-brand" to="/">
-            <img
+            <NuxtImg
               class="header_brand-logo"
               width="238"
               height="33"
