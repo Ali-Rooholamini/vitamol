@@ -15,6 +15,7 @@
               class="header_brand-logo"
               width="238"
               height="33"
+              format="webp"
               src="/images/vitamol-brand.png"
               alt="vitamol"
             />

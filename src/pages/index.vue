@@ -12,6 +12,7 @@
         src="/images/vitamol-brand-2.png"
         width="742"
         height="107"
+        format="webp"
         alt="ویتامول"
         loading="lazy"
       />
