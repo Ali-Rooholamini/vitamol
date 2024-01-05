@@ -37,7 +37,9 @@
           <li class="nav-item dropdown">
             <a
               class="nav-link"
-              :class="{ active: currentPath === 'cat' }"
+              :class="{
+                active: currentPath === 'categories-name',
+              }"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -46,17 +48,19 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <NuxtLink class="nav-link" to="/">
+                <NuxtLink class="nav-link" to="/categories/mane-guard">
                   محصولات مراقبت از مو
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink class="nav-link" to="/">
+                <NuxtLink class="nav-link" to="/categories/skin-care">
                   محصولات مراقبت از پوست
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink class="nav-link" to="/"> رنگ مو </NuxtLink>
+                <NuxtLink class="nav-link" to="/categories/hue-harmony">
+                  رنگ مو
+                </NuxtLink>
               </li>
             </ul>
           </li>
@@ -148,8 +152,11 @@ export default {
   },
 
   watch: {
-    $route(to) {
-      this.currentPath = to.name;
+    $route: {
+      immediate: true,
+      handler(to) {
+        this.currentPath = to.name;
+      },
     },
   },
 
