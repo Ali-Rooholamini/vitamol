@@ -40,6 +40,10 @@
         <ProductCarousel />
       </div>
     </section>
+
+    <section class="container category-page_product-details">
+      <ProductDetails />
+    </section>
   </div>
 </template>
 
@@ -47,6 +51,7 @@
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
+import ProductDetails from "~/components/page/categories/ProductDetails.vue";
 
 definePageMeta({
   middleware: ["categories-page"],
@@ -58,6 +63,7 @@ export default {
     PageTitle,
     SubCategories,
     ProductCarousel,
+    ProductDetails,
   },
 
   computed: {
@@ -122,7 +128,7 @@ export default {
   position: relative;
 
   @include breakpoint-up(md) {
-    margin-top: 175px;
+    margin-top: 70px;
     margin-bottom: 109px;
   }
 
@@ -196,5 +202,9 @@ export default {
       transform: rotate(45deg);
     }
   }
+}
+
+.category-page_product-details {
+  margin-bottom: 116px;
 }
 </style>
