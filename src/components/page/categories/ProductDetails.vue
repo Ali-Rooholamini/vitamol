@@ -3,11 +3,9 @@
     <div class="product-details_details">
       <div class="product-details_details-bg"></div>
       <div class="product-details_details-desc">
-        <strong>شیر مو ویتامول</strong>
+        <strong>{{ productDetail.name }}</strong>
         <p>
-          بهترین برند محصولات مراقبت از پوست و مو در ایران بهترین برند محصولات
-          مراقبت از پوست و مو در ایران بهترین برند محصولات مراقبت از پوست و مو
-          در ایران بهترین برند محصولات مراقبت از پوست و مو در ایران
+          {{ productDetail.description }}
         </p>
         <div class="product-details_details-desc_btns">
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
@@ -20,7 +18,13 @@
       </div>
     </div>
     <div class="product-details_image">
-      <img src="~/assets/images/cream-sample.webp" width="350" />
+      <NuxtImg
+        v-if="productDetail?.images[0]?.image"
+        :src="productDetail.images[0].image"
+        format="webp"
+        width="350"
+        loading="lazy"
+      />
     </div>
   </div>
 </template>
@@ -32,6 +36,13 @@ export default {
   name: "ProductDetails",
   components: {
     BaseButton,
+  },
+
+  props: {
+    productDetail: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>

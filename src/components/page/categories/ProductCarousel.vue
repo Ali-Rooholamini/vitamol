@@ -1,8 +1,18 @@
 <template>
-  <Carousel :items-to-show="itemToShow" :wrap-around="true">
-    <Slide v-for="(product, index) in productList" :key="index">
+  <Carousel
+    :items-to-show="itemToShow"
+    :wrap-around="true"
+    v-model="currentSlide"
+  >
+    <Slide v-for="(product, index) in productList" :id="index" :key="index">
       <div class="carousel__item">
-        <NuxtImg :src="product.images[0].image" :alt="product.name" />
+        <NuxtImg
+          v-if="product?.images[0]?.image"
+          :src="product.images[0].image"
+          format="webp"
+          :alt="product.name"
+          loading="lazy"
+        />
         <div class="carousel__item_title">{{ product.name }}</div>
       </div>
     </Slide>
@@ -44,7 +54,17 @@ export default defineComponent({
     return {
       isMiddle: null,
       isMobile: null,
+      currentSlide: 0,
     };
+  },
+
+  watch: {
+    currentSlide: {
+      immediate: true,
+      handler(newSlide) {
+        this.$emit("selectedProduct", newSlide);
+      },
+    },
   },
 
   computed: {

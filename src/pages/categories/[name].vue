@@ -82,15 +82,21 @@
         </div>
         <template v-else>
           <div>
-            <ProductCarousel :productList="selectedCategoryData" />
+            <ProductCarousel
+              :productList="selectedCategoryData"
+              @selectedProduct="selectedProductId = $event"
+            />
           </div>
         </template>
       </template>
     </section>
 
-    <!-- <section class="container category-page_product-details">
-      <ProductDetails />
-    </section> -->
+    <section
+      v-if="selectedProductId !== null && productData !== null"
+      class="container category-page_product-details"
+    >
+      <ProductDetails :productDetail="productData" />
+    </section>
   </div>
 </template>
 
@@ -122,6 +128,7 @@ export default {
       isProductsLoding: false,
       selectedCategoryId: null,
       selectedCategoryData: null,
+      selectedProductId: null,
     };
   },
 
@@ -135,11 +142,11 @@ export default {
         break;
 
       case "skin-care":
-        categoriesId = 2;
+        categoriesId = 6;
         break;
 
       case "hue-harmony":
-        categoriesId = 3;
+        categoriesId = 5;
         break;
 
       default:
@@ -181,10 +188,24 @@ export default {
         };
       }
     },
+    productData() {
+      if (this.selectedProductId !== null) {
+        const { name, images, description } =
+          this.selectedCategoryData[this.selectedProductId];
+        return {
+          name,
+          images,
+          description,
+        };
+      }
+
+      return null;
+    },
   },
 
   methods: {
     async getProductList(event) {
+      this.selectedCategoryId = null;
       this.isProductsLoding = true;
       this.selectedCategoryId = event;
 
