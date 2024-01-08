@@ -12,6 +12,7 @@
     <PageTitle class="category-page_title">
       {{ categoryPageTitle.name }}
     </PageTitle>
+
     <section class="category-page_category-wrapper">
       <SubCategories class="container" />
       <div class="category-page_category_bottom-color"></div>
@@ -57,6 +58,8 @@
 </template>
 
 <script>
+import { getSubCategories } from "~/services/product.js";
+
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
@@ -73,6 +76,47 @@ export default {
     SubCategories,
     ProductCarousel,
     ProductDetails,
+  },
+
+  data() {
+    return {
+      subCategories: [],
+      isCatLoading: false,
+    };
+  },
+
+  created() {
+    let categoriesId = 0;
+    this.isCatLoading = true;
+
+    switch (this.$route.params.name) {
+      case "mane-guard":
+        categoriesId = 1;
+        break;
+
+      case "skin-care":
+        categoriesId = 2;
+        break;
+
+      case "hue-harmony":
+        categoriesId = 3;
+        break;
+
+      default:
+        categoriesId = 1;
+        break;
+    }
+
+    getSubCategories(this.$axios, categoriesId)
+      .then(({ data }) => {
+        this.subCategories = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        this.isCatLoading = false;
+      });
   },
 
   computed: {
