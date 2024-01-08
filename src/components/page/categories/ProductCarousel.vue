@@ -1,9 +1,9 @@
 <template>
   <Carousel :items-to-show="itemToShow" :wrap-around="true">
-    <Slide v-for="slide in 10" :key="slide">
+    <Slide v-for="(product, index) in productList" :key="index">
       <div class="carousel__item">
-        <img src="~/assets/images/cream-sample.webp" alt="" />
-        <div class="carousel__item_title">شیر مو ویتامول</div>
+        <NuxtImg :src="product.images[0].image" :alt="product.name" />
+        <div class="carousel__item_title">{{ product.name }}</div>
       </div>
     </Slide>
 
@@ -31,6 +31,13 @@ export default defineComponent({
   mounted() {
     this.isMiddle = useMedia("(max-width: 808px)");
     this.isMobile = useMedia("(max-width: 480px)");
+  },
+
+  props: {
+    productList: {
+      type: Array,
+      required: true,
+    },
   },
 
   data() {

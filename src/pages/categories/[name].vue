@@ -82,7 +82,7 @@
         </div>
         <template v-else>
           <div>
-            <ProductCarousel />
+            <ProductCarousel :productList="selectedCategoryData" />
           </div>
         </template>
       </template>
@@ -101,7 +101,6 @@ import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 import ProductDetails from "~/components/page/categories/ProductDetails.vue";
-import axios from "axios";
 
 definePageMeta({
   middleware: ["categories-page"],
