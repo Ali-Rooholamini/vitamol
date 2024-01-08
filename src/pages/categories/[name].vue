@@ -1,11 +1,44 @@
 <template>
   <div class="category-page">
     <PageTitle class="category-page_title">
-      {{ categoryPageTitle }}
+      {{ categoryPageTitle.name }}
     </PageTitle>
     <section class="category-page_category-wrapper">
       <SubCategories class="container" />
       <div class="category-page_category_bottom-color"></div>
+    </section>
+
+    <section class="container-fluid category-page_products-carousel">
+      <div class="container">
+        <strong> برای تو که دنبال درخشش موهات هستی !</strong>
+        <NuxtImg
+          class="d-none d-md-block"
+          :src="categoryPageTitle.imgSrc"
+          format="webp"
+          loading="lazy"
+          width="517"
+          height="517"
+        />
+        <NuxtImg
+          class="butterfly-bottom d-none d-lg-block"
+          src="/images/vit-butterfly.png"
+          format="webp"
+          loading="lazy"
+          width="64"
+          height="61"
+        />
+        <NuxtImg
+          class="butterfly-top d-none d-lg-block"
+          src="/images/vit-butterfly.png"
+          format="webp"
+          loading="lazy"
+          width="105"
+          height="101"
+        />
+      </div>
+      <div>
+        <ProductCarousel />
+      </div>
     </section>
   </div>
 </template>
@@ -13,6 +46,7 @@
 <script lang="ts">
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
+import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 
 definePageMeta({
   middleware: ["categories-page"],
@@ -23,16 +57,29 @@ export default {
   components: {
     PageTitle,
     SubCategories,
+    ProductCarousel,
   },
 
   computed: {
     categoryPageTitle() {
       if (this.$route.params.name === "mane-guard") {
-        return "محصولات مراقبت ازمو ویتامول";
+        return {
+          name: "محصولات مراقبت ازمو ویتامول",
+          imgSrc:
+            "/images/woman-with-hairdo-bun-with-braided-hairstyle_511339-276.jpg",
+        };
       } else if (this.$route.params.name === "skin-care") {
-        return "محصولات مراقبت از پوست ویتامول";
+        return {
+          name: "محصولات مراقبت از پوست ویتامول",
+          imgSrc:
+            "/images/silhouette_beautiful_woman_female_face_female_face_design_element.jpg",
+        };
       } else {
-        return "رنگ موهای ویتامول";
+        return {
+          name: "رنگ موهای ویتامول",
+          imgSrc:
+            "/images/woman-hairstyle-hairdo-salon-hair-cut-logo-design_198454-472.jpg",
+        };
       }
     },
   },
@@ -66,6 +113,88 @@ export default {
     );
     z-index: -1;
     border-radius: 45%;
+  }
+}
+
+.category-page_products-carousel {
+  margin-bottom: 70px;
+  margin-top: 100px;
+  position: relative;
+
+  @include breakpoint-up(md) {
+    margin-top: 175px;
+    margin-bottom: 109px;
+  }
+
+  strong {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 34px;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    text-align: right;
+
+    @include breakpoint-down(sm) {
+      font-size: 19px !important;
+      text-align: center;
+    }
+
+    @include breakpoint-down(lg) {
+      font-size: 28px;
+    }
+
+    &::before {
+      content: "";
+      width: 26px;
+      height: 26px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+      position: absolute;
+      right: -50px;
+      top: 25%;
+
+      @include breakpoint-down(md) {
+        display: none;
+      }
+
+      @include breakpoint-down(lg) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .container {
+    margin-bottom: 147px;
+
+    @include breakpoint-down(md) {
+      margin-bottom: 10px;
+    }
+
+    > img {
+      position: absolute;
+      top: -30%;
+      left: 0px;
+      z-index: -2;
+
+      @include breakpoint-down(lg) {
+        width: 317px;
+        height: 317px;
+        top: -15%;
+      }
+    }
+
+    .butterfly-bottom {
+      top: 25%;
+      left: 35%;
+    }
+
+    .butterfly-top {
+      top: 0%;
+      left: 38%;
+      transform: rotate(45deg);
+    }
   }
 }
 </style>
