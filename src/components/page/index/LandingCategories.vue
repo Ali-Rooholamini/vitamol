@@ -33,7 +33,7 @@
               :isSvgRight="true"
               arrowSvgName="vit--arrow-right-top"
             >
-              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
+              <NuxtLink to="categories/mane-guard"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
           <div
@@ -83,7 +83,7 @@
               </p>
             </div>
             <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
-              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
+              <NuxtLink to="categories/skin-care"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
           <div
@@ -132,7 +132,7 @@
               :isSvgRight="true"
               arrowSvgName="vit--arrow-right-top"
             >
-              <NuxtLink to="order"> نمایش محصولات </NuxtLink>
+              <NuxtLink to="categories/hue-harmony"> نمایش محصولات </NuxtLink>
             </BaseButton>
           </div>
           <div
