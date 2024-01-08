@@ -14,7 +14,21 @@
     </PageTitle>
 
     <section class="category-page_category-wrapper">
-      <SubCategories class="container" />
+      <template v-if="isCatLoading">
+        <div class="w-100 d-flex justify-content-center">
+          <div class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+      </template>
+
+      <template v-else>
+        <SubCategories
+          class="container"
+          :categoryList="subCategories"
+          @activeCategory="getProductList"
+        />
+      </template>
       <div class="category-page_category_bottom-color"></div>
     </section>
 
@@ -46,24 +60,48 @@
           height="101"
         />
       </div>
-      <div>
-        <ProductCarousel />
-      </div>
+      <template v-if="selectedCategoryId === null">
+        <div class="container alert" role="alert">
+          لطفا یکی از دسته‌بندی‌های بالا را انتخاب کنید
+        </div>
+      </template>
+      <template v-else-if="isProductsLoding && selectedCategoryId">
+        <div class="w-100 d-flex justify-content-center">
+          <div class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div
+          v-if="selectedCategoryData === null"
+          class="container alert"
+          role="alert"
+        >
+          محصولی یافت نشد
+        </div>
+        <template v-else>
+          <div>
+            <ProductCarousel />
+          </div>
+        </template>
+      </template>
     </section>
 
-    <section class="container category-page_product-details">
+    <!-- <section class="container category-page_product-details">
       <ProductDetails />
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
-import { getSubCategories } from "~/services/product.js";
+import { getSubCategories, getProductList } from "~/services/product.js";
 
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 import ProductDetails from "~/components/page/categories/ProductDetails.vue";
+import axios from "axios";
 
 definePageMeta({
   middleware: ["categories-page"],
@@ -82,6 +120,9 @@ export default {
     return {
       subCategories: [],
       isCatLoading: false,
+      isProductsLoding: false,
+      selectedCategoryId: null,
+      selectedCategoryData: null,
     };
   },
 
@@ -109,7 +150,7 @@ export default {
 
     getSubCategories(this.$axios, categoriesId)
       .then(({ data }) => {
-        this.subCategories = data;
+        this.subCategories = JSON.parse(JSON.stringify(data));
       })
       .catch((err) => {
         console.log(err);
@@ -140,6 +181,26 @@ export default {
             "/images/woman-hairstyle-hairdo-salon-hair-cut-logo-design_198454-472.jpg",
         };
       }
+    },
+  },
+
+  methods: {
+    async getProductList(event) {
+      this.isProductsLoding = true;
+      this.selectedCategoryId = event;
+
+      const { data, error } = await getProductList(
+        this.$axios,
+        this.selectedCategoryId
+      );
+
+      if (data.length !== 0) {
+        this.selectedCategoryData = JSON.parse(JSON.stringify(data));
+      } else {
+        this.selectedCategoryData = null;
+      }
+
+      this.isProductsLoding = false;
     },
   },
 };
@@ -259,5 +320,17 @@ export default {
 
 .category-page_product-details {
   margin-bottom: 116px;
+}
+
+.spinner-border {
+  margin-top: 105px;
+  margin-bottom: 105px;
+}
+
+.alert {
+  width: 320px;
+  text-align: center;
+  background-color: var(--secondary-color);
+  color: var(--color-white);
 }
 </style>

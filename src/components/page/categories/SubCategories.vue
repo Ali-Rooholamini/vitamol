@@ -1,16 +1,20 @@
 <template>
   <div class="sub-categories">
     <div
-      v-for="cat in tempoCategories"
+      v-for="cat in categoryList"
       :key="cat.id"
       class="sub-categories_category"
       :class="{ active: activeCats === cat.id }"
+      :style="`background-image: url(${
+        cat.image || '/images/header-image.png'
+      })`"
       @click="setActive(cat.id)"
     >
       <div class="sub-categories_category-filter"></div>
       <span class="sub-categories_category-brand">ویتــامول</span>
+      <img :src="cat.image" alt="" />
       <div class="sub-categories_category-desc">
-        <p>{{ cat.cat_desc }}</p>
+        <p>{{ cat.name }}</p>
       </div>
     </div>
   </div>
@@ -23,42 +27,27 @@ export default {
   data() {
     return {
       activeCats: null,
-      tempoCategories: [
-        {
-          id: 1,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 2,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 3,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 4,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 5,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 6,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-        {
-          id: 7,
-          cat_desc: "برای تو که دنبال درخشش موهات هستی !",
-        },
-      ],
     };
+  },
+  props: {
+    categoryList: {
+      type: [Array, Object],
+      required: true,
+      default: () => {
+        return [{}];
+      },
+    },
   },
 
   methods: {
     setActive(id) {
       this.activeCats = id;
+    },
+  },
+
+  watch: {
+    activeCats(newId) {
+      this.$emit("activeCategory", newId);
     },
   },
 };
@@ -109,7 +98,6 @@ export default {
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0px 10px 50px -5px rgba(0, 0, 0, 0.25);
-  background: url("/images/header-image.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
