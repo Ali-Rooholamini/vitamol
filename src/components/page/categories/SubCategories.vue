@@ -12,7 +12,6 @@
     >
       <div class="sub-categories_category-filter"></div>
       <span class="sub-categories_category-brand">ویتــامول</span>
-      <img :src="cat.image" alt="" />
       <div class="sub-categories_category-desc">
         <p>{{ cat.name }}</p>
       </div>
