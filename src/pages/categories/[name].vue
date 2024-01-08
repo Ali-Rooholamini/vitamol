@@ -1,5 +1,14 @@
 <template>
   <div class="category-page">
+    <Meta name="title" content="محصولات ویتامول" />
+    <Meta name="og:title" property="og:title" content="محصولات ویتامول" />
+    <Meta name="description" content="محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="محصولات آرایش بهداشتی ویتامول"
+    />
+
     <PageTitle class="category-page_title">
       {{ categoryPageTitle.name }}
     </PageTitle>
@@ -47,7 +56,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";

@@ -1,5 +1,14 @@
 <template>
   <div>
+    <Meta name="title" content="ویتامول" />
+    <Meta name="og:title" property="og:title" content="ویتامول" />
+    <Meta name="description" content="محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="محصولات آرایش بهداشتی ویتامول"
+    />
+
     <section class="landing_header">
       <LandingHeader />
     </section>
