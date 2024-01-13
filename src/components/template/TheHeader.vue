@@ -69,7 +69,7 @@
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'delegate' }"
-              to="/"
+              to="/delegate"
             >
               نمایندگی
             </NuxtLink>

@@ -75,7 +75,7 @@
           <NuxtLink
             class="menu-link"
             :class="{ active: currentPath === 'delegate' }"
-            to="/"
+            to="/delegate"
             @click="toggleOffcanvas"
           >
             نمایندگی
