@@ -9,6 +9,7 @@
         format="webp"
         width="61"
         height="57"
+        alt="ویتامول"
       />
     </div>
     <NuxtImg

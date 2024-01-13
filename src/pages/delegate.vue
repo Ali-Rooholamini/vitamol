@@ -1,5 +1,18 @@
 <template>
   <div class="delegates-page">
+    <Meta name="title" content="اعطای نمایندگی ویتامول" />
+    <Meta
+      name="og:title"
+      property="og:title"
+      content="اعطای نمایندگی ویتامول"
+    />
+    <Meta name="description" content="اعطای نمایندگی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="اعطای نمایندگی ویتامول"
+    />
+
     <PageTitle class="delegates-page_title"> اعطای نمایندگی </PageTitle>
 
     <div class="container-fluid">
@@ -25,12 +38,14 @@
             src="images/vit-butterfly.png"
             format="webp"
             loading="lazy"
+            alt="ویتامول"
           />
           <NuxtImg
             width="144"
             height="137"
             src="/images/vit-butterfly.png"
             format="webp"
+            alt="ویتامول"
             loading="lazy"
           />
           <NuxtImg
@@ -38,6 +53,7 @@
             height="94"
             src="/images/vit-butterfly.png"
             format="webp"
+            alt="ویتامول"
             loading="lazy"
           />
         </div>

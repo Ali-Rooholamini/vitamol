@@ -21,7 +21,7 @@
         <div class="col-6 col-md-3 col-lg-2">
           <ul class="footer_links-section">
             <li><NuxtLink to="/">تماس با ما</NuxtLink></li>
-            <li><NuxtLink to="/">اعطای نمایندگی</NuxtLink></li>
+            <li><NuxtLink to="/delegate">اعطای نمایندگی</NuxtLink></li>
             <li><NuxtLink to="/">استخدام</NuxtLink></li>
             <li><NuxtLink to="/">ثبت سفارش</NuxtLink></li>
           </ul>
