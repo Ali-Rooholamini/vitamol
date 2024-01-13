@@ -83,7 +83,7 @@
           <NuxtLink
             class="menu-link"
             :class="{ active: currentPath === 'order' }"
-            to="/"
+            to="/order"
             @click="toggleOffcanvas"
           >
             ثبت سفارش

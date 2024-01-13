@@ -78,7 +78,7 @@
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'order' }"
-              to="/"
+              to="/order"
             >
               ثبت سفارش
             </NuxtLink>

@@ -9,7 +9,7 @@
         </p>
         <div class="product-details_details-desc_btns">
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
-            سفارش محصولات
+            <NuxtLink to="/order"> سفارش محصولات </NuxtLink>
           </BaseButton>
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
             مطالعه بیشتر
