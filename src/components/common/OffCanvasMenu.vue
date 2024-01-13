@@ -79,7 +79,7 @@
           <NuxtLink
             class="menu-link"
             :class="{ active: currentPath === 'blog' }"
-            to="/blog"
+            to="/"
             @click="toggleOffcanvas"
           >
             وبلاگ

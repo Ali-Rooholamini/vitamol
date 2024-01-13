@@ -20,17 +20,17 @@
       <div class="footer_links-wrapper row">
         <div class="col-6 col-md-3 col-lg-2">
           <ul class="footer_links-section">
-            <li><NuxtLink to="/contact-us">تماس با ما</NuxtLink></li>
-            <li><NuxtLink to="/delegate">اعطای نمایندگی</NuxtLink></li>
-            <li><NuxtLink to="/contact-us">استخدام</NuxtLink></li>
-            <li><NuxtLink to="/order">ثبت سفارش</NuxtLink></li>
+            <li><NuxtLink to="/">تماس با ما</NuxtLink></li>
+            <li><NuxtLink to="/">اعطای نمایندگی</NuxtLink></li>
+            <li><NuxtLink to="/">استخدام</NuxtLink></li>
+            <li><NuxtLink to="/">ثبت سفارش</NuxtLink></li>
           </ul>
         </div>
         <div class="col-6 col-md-3 col-lg-2">
           <ul class="footer_links-section">
-            <li><NuxtLink to="/cat">محصولات</NuxtLink></li>
-            <li><NuxtLink to="/cat">محصولات سالنی</NuxtLink></li>
-            <li><NuxtLink to="/cat">دیگر محصولات</NuxtLink></li>
+            <li><NuxtLink to="/">محصولات</NuxtLink></li>
+            <li><NuxtLink to="/">محصولات سالنی</NuxtLink></li>
+            <li><NuxtLink to="/">دیگر محصولات</NuxtLink></li>
             <li><NuxtLink to="/">دانلود کاتالوگ</NuxtLink></li>
           </ul>
         </div>
@@ -44,16 +44,16 @@
         <div class="col-6 mt-5 mt-md-0 col-md-3 col-lg-2">
           <span>راه‌های ارتباطی</span>
           <div class="footer_social-section">
-            <NuxtLink to="">
+            <NuxtLink to="/">
               <nuxt-icon name="social/instagram" filled />
             </NuxtLink>
-            <NuxtLink to="">
+            <NuxtLink to="/">
               <nuxt-icon name="social/twitter" filled />
             </NuxtLink>
-            <NuxtLink to="">
+            <NuxtLink to="/">
               <nuxt-icon name="social/whatsapp" filled />
             </NuxtLink>
-            <NuxtLink to="">
+            <NuxtLink to="/">
               <nuxt-icon name="social/telegram" filled />
             </NuxtLink>
           </div>

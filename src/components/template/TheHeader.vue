@@ -87,7 +87,7 @@
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'blog' }"
-              to="/blog"
+              to="/"
             >
               وبلاگ
             </NuxtLink>
@@ -104,7 +104,7 @@
           <li class="nav-item">
             <NuxtLink
               class="nav-link"
-              :class="{ active: currentPath === 'contact-us' }"
+              :class="{ active: currentPath === '/' }"
               to="/"
             >
               تماس با ما

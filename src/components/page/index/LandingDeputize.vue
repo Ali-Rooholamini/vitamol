@@ -13,7 +13,7 @@
       />
 
       <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left">
-        <NuxtLink to="delegate">اعطای نمایندگی</NuxtLink>
+        <NuxtLink to="/">اعطای نمایندگی</NuxtLink>
       </BaseButton>
     </div>
   </div>
