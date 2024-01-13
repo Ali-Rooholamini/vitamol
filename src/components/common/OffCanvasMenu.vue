@@ -42,17 +42,29 @@
             <div class="collapse" id="collapseExample">
               <ul class="nav">
                 <li class="nav-item">
-                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                  <NuxtLink
+                    class="nav-link"
+                    to="/categories/mane-guard"
+                    @click="toggleOffcanvas"
+                  >
                     محصولات مراقبت از مو
                   </NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                  <NuxtLink
+                    class="nav-link"
+                    to="/categories/skin-care"
+                    @click="toggleOffcanvas"
+                  >
                     محصولات مراقبت از پوست
                   </NuxtLink>
                 </li>
                 <li class="nav-item">
-                  <NuxtLink class="nav-link" to="/" @click="toggleOffcanvas">
+                  <NuxtLink
+                    class="nav-link"
+                    to="/categories/hue-harmony"
+                    @click="toggleOffcanvas"
+                  >
                     رنگ مو
                   </NuxtLink>
                 </li>
