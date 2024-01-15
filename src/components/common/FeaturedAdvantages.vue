@@ -45,6 +45,7 @@ export default {
   }
 
   .featured-advantages_feature_icon {
+    background-color: var(--color-white);
     position: relative;
     display: flex;
     justify-content: center;
@@ -52,12 +53,17 @@ export default {
     width: 90px;
     height: 90px;
     border-radius: 50%;
+    z-index: 0;
     box-shadow: 0px 25px 50px -5px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 
     @include breakpoint-up(md) {
       width: 120px;
       height: 120px;
+    }
+
+    .nuxt-icon {
+      z-index: 2;
     }
 
     .nuxt-icon :deep(svg) {
@@ -76,7 +82,7 @@ export default {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      z-index: -1;
+      z-index: 0;
       background: linear-gradient(
         180deg,
         #f9d9e6 0%,

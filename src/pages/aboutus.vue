@@ -52,6 +52,17 @@
         </p>
       </div>
     </section>
+
+    <section class="aboutus-page_awards">
+      <div class="aboutus-page_awards-bgcolor"></div>
+      <b class="aboutus-page_awards-title">جوایز و افتخارات</b>
+      <div class="container">
+        <FeaturedAdvantages
+          class="aboutus-page_awards-list"
+          :featuredList="awardsList"
+        />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -91,6 +102,23 @@ export default {
         {
           iconName: "vit--cup-star",
           explain: "مجوز رسمی وزارت بهداشت",
+        },
+      ];
+    },
+
+    awardsList() {
+      return [
+        {
+          iconName: "vit--tag-price",
+          explain: "جایزه جشنواره مراقبت های پوستی",
+        },
+        {
+          iconName: "vit--hand-stars",
+          explain: "جایزه جشنواره مراقبت های پوستی",
+        },
+        {
+          iconName: "vit--bill",
+          explain: "جایزه جشنواره مراقبت های پوستی",
         },
       ];
     },
@@ -273,7 +301,11 @@ export default {
   align-items: center;
   flex-direction: column;
   gap: 35px;
-  margin-bottom: 147px;
+  margin-bottom: 100px;
+
+  @include breakpoint-up(md) {
+    margin-bottom: 167px;
+  }
 
   @include breakpoint-up(lg) {
     flex-direction: row;
@@ -325,6 +357,63 @@ export default {
         font-size: 30px;
       }
     }
+  }
+}
+
+.aboutus-page_awards {
+  position: relative;
+  padding-top: 30px;
+  overflow: hidden;
+  margin-bottom: 80px;
+
+  @include breakpoint-up(md) {
+    margin-bottom: 100px;
+    padding-top: 60px;
+  }
+
+  .aboutus-page_awards-bgcolor {
+    position: absolute;
+    top: 0px;
+    right: -200px;
+    width: calc(100% + 400px);
+    height: 254px;
+    background: linear-gradient(
+      180deg,
+      #d2e2ff 7.23%,
+      rgba(213, 226, 254, 0.94) 12.24%,
+      rgba(255, 255, 255, 0) 87.29%
+    );
+    z-index: -1;
+    border-radius: 45%;
+  }
+
+  > b {
+    display: block;
+    color: var(--secondary-color);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    display: block;
+    margin-bottom: 45px;
+
+    @include breakpoint-up(sm) {
+      font-size: 32px;
+    }
+
+    @include breakpoint-up(md) {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+
+    @include breakpoint-up(lg) {
+      font-size: 47px;
+    }
+  }
+
+  .aboutus-page_awards-list {
+    justify-content: center !important;
+    gap: 15%;
   }
 }
 </style>
