@@ -18,9 +18,9 @@
               alt="ویتامول"
             />
           </div>
-          <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top"
-            >درباره ویتامول</BaseButton
-          >
+          <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
+            <NuxtLink to="/aboutus">درباره ویتامول</NuxtLink>
+          </BaseButton>
         </div>
         <div class="d-none d-lg-flex col-6 landing-header_left-section">
           <HeaderSlider class="landing-header_left-section_slider" />
