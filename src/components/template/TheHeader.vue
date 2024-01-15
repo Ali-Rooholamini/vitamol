@@ -96,7 +96,7 @@
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'aboutus' }"
-              to="/"
+              to="/aboutus"
             >
               درباره ما
             </NuxtLink>

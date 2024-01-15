@@ -99,7 +99,7 @@
           <NuxtLink
             class="menu-link"
             :class="{ active: currentPath === 'aboutus' }"
-            to="/"
+            to="/aboutus"
             @click="toggleOffcanvas"
           >
             درباره ما
