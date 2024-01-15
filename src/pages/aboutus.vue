@@ -34,12 +34,31 @@
         />
       </div>
     </section>
+
+    <section class="container aboutus-page_exhibition">
+      <div class="aboutus-page_exhibition-carousel">
+        <ExhibitionCarousel />
+      </div>
+      <div class="aboutus-page_exhibition-desc">
+        <b>حضور فعال در نمایشگاه ها</b>
+        <p>
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+          استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
+          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+        </p>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import PageTitle from "~/components/common/PageTitle.vue";
 import FeaturedAdvantages from "~/components/common/FeaturedAdvantages.vue";
+import ExhibitionCarousel from "~/components/page/aboutus/ExhibitionCarousel.vue";
 
 export default {
   name: "AboutUs",
@@ -47,6 +66,7 @@ export default {
   components: {
     PageTitle,
     FeaturedAdvantages,
+    ExhibitionCarousel,
   },
 
   computed: {
@@ -242,6 +262,67 @@ export default {
         @include breakpoint-up(sm) {
           font-size: 24px;
         }
+      }
+    }
+  }
+}
+
+.aboutus-page_exhibition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 35px;
+  margin-bottom: 147px;
+
+  @include breakpoint-up(lg) {
+    flex-direction: row;
+    gap: 55px;
+  }
+
+  .aboutus-page_exhibition-desc {
+    width: 100%;
+    max-width: 734px;
+
+    > b {
+      display: block;
+      color: var(--secondary-color);
+      font-size: 26px;
+      font-weight: 500;
+      margin-bottom: 15px;
+
+      @include breakpoint-up(sm) {
+        font-size: 34px;
+      }
+
+      @include breakpoint-up(md) {
+        margin-bottom: 24px;
+        font-size: 40px;
+      }
+
+      @include breakpoint-up(lg) {
+        font-size: 47px;
+      }
+    }
+
+    > p {
+      color: rgba(0, 37, 97, 0.8);
+      text-align: justify;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 27px;
+
+      @include breakpoint-up(sm) {
+        font-size: 22px;
+      }
+
+      @include breakpoint-up(md) {
+        font-size: 26px;
+        line-height: normal;
+      }
+
+      @include breakpoint-up(lg) {
+        font-size: 30px;
       }
     }
   }
