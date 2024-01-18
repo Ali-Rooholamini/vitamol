@@ -97,6 +97,7 @@ export default {
       align-items: flex-start;
       flex-direction: column;
       gap: 35px;
+      overflow-wrap: break-word;
 
       strong {
         color: var(--secondary-color);

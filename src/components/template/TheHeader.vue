@@ -87,7 +87,7 @@
             <NuxtLink
               class="nav-link"
               :class="{ active: currentPath === 'blog' }"
-              to="/"
+              to="/blog"
             >
               وبلاگ
             </NuxtLink>

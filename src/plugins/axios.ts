@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default defineNuxtPlugin(() => {
   let api = axios.create({
-    baseURL : "https://api.vitamolcare.com",
+    baseURL : "http://api.vitamolcare.com",
     headers: {
       "Content-Type": "application/json",
     },
