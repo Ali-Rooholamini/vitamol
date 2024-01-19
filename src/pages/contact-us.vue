@@ -173,24 +173,55 @@ export default {
 
 .contact-us_main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
   margin-bottom: 87px;
 
+  @include breakpoint-up(md) {
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 0px;
+  }
   .contact-us_communicate {
-    padding: 24px 100px 31px 100px;
+    padding: 24px 15px 31px 15px;
     background: linear-gradient(
       270deg,
       #ffdeeb 0.9%,
       rgba(255, 222, 235, 0) 72.48%
     );
 
+    @include breakpoint-up(sm) {
+      padding: 24px 20px 31px 20px;
+    }
+
+    @include breakpoint-up(md) {
+      padding: 24px 40px 31px 40px;
+    }
+    @include breakpoint-up(lg) {
+      padding: 24px 80px 31px 80px;
+    }
+    @include breakpoint-up(xl) {
+      padding: 24px 100px 31px 100px;
+    }
+
     > strong {
       display: block;
       margin-bottom: 22px;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 500;
       line-height: normal;
       color: var(--secondary-color);
+
+      @include breakpoint-up(sm) {
+        font-size: 20px;
+      }
+      @include breakpoint-up(md) {
+        font-size: 22px;
+      }
+      @include breakpoint-up(lg) {
+        font-size: 24px;
+      }
     }
 
     .contact-us_communicate-info {
@@ -227,9 +258,25 @@ export default {
       .contact-us_communicate-info-detail {
         vertical-align: bottom;
         color: var(--secondary-color);
-        font-size: 22px;
+        font-size: 15px;
         font-weight: 500;
         font-family: PeydaWeb;
+
+        @include breakpoint-up(sm) {
+          font-size: 16px;
+        }
+
+        @include breakpoint-up(md) {
+          font-size: 20px;
+        }
+
+        @include breakpoint-up(lg) {
+          font-size: 18px;
+        }
+
+        @include breakpoint-up(xl) {
+          font-size: 22px;
+        }
       }
     }
   }
@@ -241,7 +288,7 @@ export default {
     align-items: flex-end;
 
     .contact-us_contact-form-title {
-      border-radius: 00px 80px 0px 0px;
+      border-radius: 0px 80px 0px 015px;
       background: linear-gradient(
         90deg,
         #dae7ff 13.14%,
@@ -295,15 +342,43 @@ export default {
     }
 
     .contact-us_form {
-      padding: 24px 80px 31px 80px;
+      width: 100%;
+      padding: 24px 15px 31px 15px;
       background: linear-gradient(
         90deg,
         #d5e4ff 0.9%,
         rgba(255, 255, 255, 0) 72.48%
       );
 
+      @include breakpoint-up(sm) {
+        width: initial;
+        padding: 24px 40px 31px 40px;
+      }
+
+      @include breakpoint-up(md) {
+        padding: 24px 20px 31px 20px;
+      }
+      @include breakpoint-up(lg) {
+        padding: 24px 40px 31px 40px;
+      }
+      @include breakpoint-up(xl) {
+        padding: 24px 80px 31px 80px;
+      }
+
       > .contact-us_form-input {
-        width: 400px;
+        width: 100%;
+
+        @include breakpoint-up(md) {
+          width: 400px;
+        }
+
+        @include breakpoint-up(lg) {
+          width: 360px;
+        }
+
+        @include breakpoint-up(xl) {
+          width: 400px;
+        }
       }
     }
   }
@@ -360,7 +435,12 @@ export default {
 
   .contact-us_form-submit-button {
     width: 100%;
+    height: 48px !important;
     border-radius: 8px !important;
+
+    @include breakpoint-up(md) {
+      height: 48px !important;
+    }
   }
 }
 </style>
