@@ -32,7 +32,7 @@ import { getBlogDetail } from "~/services/blog.js";
 import PageTitle from "~/components/common/PageTitle.vue";
 
 export default {
-  name: "outPage",
+  name: "BlogPostPage",
   components: {
     PageTitle,
   },

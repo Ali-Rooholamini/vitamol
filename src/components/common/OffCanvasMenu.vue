@@ -106,8 +106,8 @@
           </NuxtLink>
           <NuxtLink
             class="menu-link"
-            :class="{ active: currentPath === 'contant-us' }"
-            to="/"
+            :class="{ active: currentPath === 'contact-us' }"
+            to="/contact-us"
             @click="toggleOffcanvas"
           >
             تماس با ما

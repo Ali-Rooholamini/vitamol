@@ -104,8 +104,8 @@
           <li class="nav-item">
             <NuxtLink
               class="nav-link"
-              :class="{ active: currentPath === '/' }"
-              to="/"
+              :class="{ active: currentPath === 'contact-us' }"
+              to="/contact-us"
             >
               تماس با ما
             </NuxtLink>
