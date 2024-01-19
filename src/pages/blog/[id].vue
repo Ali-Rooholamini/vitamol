@@ -78,16 +78,56 @@ export default {
   margin-bottom: 200px;
 
   .post_description-detail {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint-up(md) {
+      display: block;
+    }
+
     > img {
-      float: left;
-      margin-right: 65px;
-      margin-bottom: 26px;
+      align-self: center;
+      width: 244px;
+      height: 330px;
+      float: none;
+      margin-right: 0px;
+      margin-bottom: 50px;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       border-radius: 32px;
+
+      @include breakpoint-up(md) {
+        align-self: auto;
+        margin-right: 35px;
+        margin-bottom: 26px;
+        float: left;
+      }
+
+      @include breakpoint-up(lg) {
+        width: 464px;
+        height: 637px;
+        margin-right: 65px;
+        margin-bottom: 26px;
+        float: left;
+      }
     }
 
     > p {
       text-align: justify;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--secondary-color);
+
+      @include breakpoint-up(sm) {
+        font-size: 18px;
+      }
+
+      @include breakpoint-up(md) {
+        font-size: 22px;
+      }
+
+      @include breakpoint-up(lg) {
+        font-size: 24px;
+      }
     }
   }
 
