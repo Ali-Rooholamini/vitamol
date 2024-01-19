@@ -59,7 +59,63 @@
             alt="ویتامول"
           />
         </div>
-        <form @submit.prevent></form>
+        <form @submit.prevent class="contact-us_form">
+          <BaseFormTextInput
+            class="contact-us_form-input mb-4"
+            placeholder="نام و نام خانوادگی:"
+            v-model:value="contactUsForm.fullName"
+            :min="5"
+          />
+          <BaseFormTextInput
+            class="contact-us_form-input mb-4"
+            placeholder="شماره تماس:"
+            v-model:value="contactUsForm.phoneNumber"
+            validation-type="phoneNumber"
+            :regex="/^(\+98|0)?9\d{9}$/"
+            :min="11"
+            :max="11"
+          />
+          <BaseFormTextInput
+            class="contact-us_form-input mb-4"
+            placeholder="ایمیل:"
+            v-model:value="contactUsForm.email"
+            validation-type="email"
+            :regex="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+          />
+          <div class="contact-us_form-submit">
+            <div class="contact-us_form-date">
+              <label for="weekDay">ساعت تماس با شما</label>
+              <div class="contact-us_form-date-wrapper">
+                <select
+                  name="weekDay"
+                  id="weekDay"
+                  required
+                  v-model="contactUsForm.weekDay"
+                >
+                  <option value="0" disabled selected>روز</option>
+                  <option
+                    v-for="(day, index) in weekDays"
+                    :key="index"
+                    :value="day"
+                  >
+                    {{ day }}
+                  </option>
+                </select>
+                <select
+                  name="dayTime"
+                  id="dayTime"
+                  required
+                  v-model="contactUsForm.dayHour"
+                >
+                  <option value="0" disabled selected>ساعت</option>
+                  <option value="فبل از ظهر">قبل از ظهر</option>
+                  <option value="بعد از ظهر">بعد از ظهر</option>
+                </select>
+              </div>
+            </div>
+            <BaseButton class="contact-us_form-submit-button">ارسال</BaseButton>
+          </div>
+        </form>
       </div>
     </section>
   </div>
@@ -67,11 +123,41 @@
 
 <script>
 import PageTitle from "~/components/common/PageTitle.vue";
+import BaseButton from "~/components/global/BaseButton.vue";
+import BaseFormTextInput from "~/components/global/BaseFormTextInput.vue";
 
 export default {
   name: "ContactUsPage",
   components: {
     PageTitle,
+    BaseFormTextInput,
+    BaseButton,
+  },
+
+  data() {
+    return {
+      contactUsForm: {
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        weekDay: "0",
+        dayHour: "0",
+      },
+    };
+  },
+
+  computed: {
+    weekDays() {
+      return [
+        "شنبه",
+        "یک شنبه",
+        "دو شنبه",
+        "سه شنبه",
+        "چهارشنبه",
+        "پنج شنبه",
+        "جمعه",
+      ];
+    },
   },
 };
 </script>
@@ -149,6 +235,11 @@ export default {
   }
 
   .contact-us_contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
     .contact-us_contact-form-title {
       border-radius: 00px 80px 0px 0px;
       background: linear-gradient(
@@ -159,6 +250,11 @@ export default {
       box-shadow: 0px 10px 50px -5px rgba(0, 0, 0, 0.25);
       padding: 20px 40px 20px 20px;
       position: relative;
+      margin-bottom: 30px;
+
+      @include breakpoint-up(md) {
+        margin-bottom: 60px;
+      }
 
       @include breakpoint-up(lg) {
         padding: 30px 60px 30px 80px;
@@ -197,6 +293,74 @@ export default {
         }
       }
     }
+
+    .contact-us_form {
+      padding: 24px 80px 31px 80px;
+      background: linear-gradient(
+        90deg,
+        #d5e4ff 0.9%,
+        rgba(255, 255, 255, 0) 72.48%
+      );
+
+      > .contact-us_form-input {
+        width: 400px;
+      }
+    }
+  }
+}
+
+.contact-us_form-submit {
+  font-family: PeydaWeb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+
+  .contact-us_form-date {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+
+    > label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--secondary-color);
+    }
+
+    .contact-us_form-date-wrapper {
+      width: 249px;
+      height: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 8px;
+      border: 1px solid var(--secondary-color);
+      border-radius: 8px;
+
+      > select {
+        cursor: pointer;
+        width: 100%;
+        max-width: 113px;
+        height: 36px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--secondary-color);
+        text-align: right;
+        background: #bad4ff;
+        padding: 0px 8px;
+        border-radius: 8px;
+        border: none;
+      }
+    }
+  }
+
+  .contact-us_form-submit-button {
+    width: 100%;
+    border-radius: 8px !important;
   }
 }
 </style>
