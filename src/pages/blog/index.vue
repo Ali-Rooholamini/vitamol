@@ -8,6 +8,7 @@
           v-for="(post, index) in blogList"
           :key="index"
           class="blog-page_post"
+          @click="goToPostPage(index + 1)"
         >
           <div
             class="blog-page_post_image-wrapper pink-bg"
@@ -74,6 +75,12 @@ export default {
       .finally(() => {
         this.loading = false;
       });
+  },
+
+  methods: {
+    goToPostPage(id) {
+      this.$router.push(`/blog/${id}`);
+    },
   },
 };
 </script>
