@@ -118,6 +118,50 @@
         </form>
       </div>
     </section>
+
+    <section class="contact-us_hiring">
+      <div class="contact-us_hiring-bg-color"></div>
+      <b>فرم استخدام</b>
+      <form @submit.prevent class="container contact-us_hiring-form">
+        <BaseFormTextInput
+          class="contact-us_form-input w-100"
+          placeholder="نام و نام خانوادگی:"
+          v-model:value="hiringFormData.fullName"
+          :min="5"
+        />
+        <BaseFormTextInput
+          class="contact-us_form-input w-100"
+          placeholder="شماره تماس:"
+          v-model:value="hiringFormData.phoneNumber"
+          validation-type="phoneNumber"
+          :regex="/^(\+98|0)?9\d{9}$/"
+          :min="11"
+          :max="11"
+        />
+        <BaseFormTextInput
+          class="contact-us_form-input w-100"
+          placeholder="ایمیل:"
+          v-model:value="hiringFormData.email"
+          validation-type="email"
+          :regex="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
+        />
+        <textarea
+          class="contact-us_form-desc w-100"
+          name="hiringDesc"
+          v-model="hiringFormData.description"
+          placeholder="توضیحات"
+        >
+        </textarea>
+        <div class="contact-us_form-download">
+          <span>دانلود فایل استخدام:</span>
+          <BaseButton class="contact-us_form-hiring-button">دانلود</BaseButton>
+        </div>
+        <div class="contact-us_form-upload">
+          <span>آپلود فایل رزومه (pdf):</span>
+          <BaseButton class="contact-us_form-hiring-button">ارسال</BaseButton>
+        </div>
+      </form>
+    </section>
   </div>
 </template>
 
@@ -142,6 +186,12 @@ export default {
         email: "",
         weekDay: "0",
         dayHour: "0",
+      },
+      hiringFormData: {
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        description: "",
       },
     };
   },
@@ -440,6 +490,114 @@ export default {
 
     @include breakpoint-up(md) {
       height: 48px !important;
+    }
+  }
+}
+
+.contact-us_hiring {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 130px;
+
+  > b {
+    margin: 37px auto 47px auto;
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--secondary-color);
+    font-family: Morabba;
+
+    @include breakpoint-up(sm) {
+      font-size: 28px;
+    }
+
+    @include breakpoint-up(md) {
+      margin: 47px auto 57px auto;
+      font-size: 37px;
+    }
+
+    @include breakpoint-up(lg) {
+      font-size: 47px;
+    }
+  }
+
+  .contact-us_hiring-bg-color {
+    position: absolute;
+    top: 0px;
+    right: -200px;
+    width: calc(100% + 400px);
+    height: 254px;
+    background: linear-gradient(
+      180deg,
+      #ffdfeb 7.23%,
+      rgba(255, 223, 235, 0) 87.29%
+    );
+    z-index: -1;
+    border-radius: 45%;
+  }
+
+  .contact-us_hiring-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0px 10px;
+
+    @include breakpoint-up(md) {
+      padding: 0px 30px;
+    }
+
+    > .contact-us_form-input {
+      flex: 1 0 30.333%;
+    }
+
+    .contact-us_form-desc {
+      flex: 1 0 30.333%;
+      padding: 16px 12px;
+      border-radius: 8px;
+      height: 92px;
+      border: 1px solid var(--secondary-color);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: PeydaWeb;
+      background-color: var(--color-white);
+    }
+
+    .contact-us_form-download,
+    .contact-us_form-upload {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: PeydaWeb;
+      padding: 16px 12px;
+      flex: 1 0 30.333%;
+      width: 100%;
+      max-width: 400px;
+      height: 92px;
+      border: 1px solid var(--secondary-color);
+      background-color: var(--color-white);
+      border-radius: 8px;
+    }
+
+    .contact-us_form-hiring-button {
+      width: 136px !important;
+      height: 40px !important;
+      border-radius: 8px;
+      align-self: flex-end;
+      font-size: 13px !important;
+      font-family: PeydaWeb;
+      color: var(--secondary-color);
+      background-color: #d8e4fe;
+      border: 1px solid #d8e4fe !important;
+
+      &:hover {
+        background-color: var(--secondary-color);
+        color: var(--color-white);
+      }
     }
   }
 }
