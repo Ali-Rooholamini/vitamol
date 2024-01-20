@@ -14,17 +14,17 @@
     <section class="container blog-page_post-wrapper">
       <template v-if="!loading && blogList.length > 0">
         <div
-          v-for="(post, index) in blogList"
-          :key="index"
+          v-for="post in blogList"
+          :key="post.id"
           class="blog-page_post"
-          @click="goToPostPage(index + 1)"
+          @click="goToPostPage(post.id)"
         >
           <div
             class="blog-page_post_image-wrapper pink-bg"
-            :class="{ 'blue-bg': (index + 1) % 2 === 0 }"
+            :class="{ 'blue-bg': post.id % 2 === 0 }"
           >
             <NuxtImg
-              :src="post?.images[0] || '/images/header-image.png'"
+              :src="post?.images[0]?.image || '/images/header-image.png'"
               format="webp"
               width="237"
               height="330"
@@ -77,6 +77,7 @@ export default {
     getBlogList(this.$axios)
       .then(({ data }) => {
         this.blogList = JSON.parse(JSON.stringify(data));
+        console.log(this.blogList);
       })
       .catch((err) => {
         console.log(err);
