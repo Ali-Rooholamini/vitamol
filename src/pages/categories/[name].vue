@@ -260,6 +260,7 @@ export default {
   margin-bottom: 70px;
   margin-top: 100px;
   position: relative;
+  padding: 1px;
 
   @include breakpoint-up(md) {
     margin-top: 70px;

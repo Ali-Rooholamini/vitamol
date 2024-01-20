@@ -49,11 +49,13 @@ export default {
 
 <style lang="scss" scoped>
 .product-details {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  @include breakpoint-up(sm) {
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 
   @include breakpoint-up(lg) {
     flex-direction: row;
@@ -72,18 +74,23 @@ export default {
     }
 
     .product-details_details-bg {
-      width: 341px;
+      width: 100%;
       height: 380px;
       background-color: red;
       position: absolute;
       right: 0px;
       z-index: -1;
-      border-radius: 317px;
+      border-radius: 15px;
       background: linear-gradient(
         268deg,
         #fee0eb 12.47%,
         rgba(255, 255, 255, 0) 64.82%
       );
+
+      @include breakpoint-up(sm) {
+        width: 341px;
+        border-radius: 317px;
+      }
 
       @include breakpoint-up(md) {
         height: 450px;
@@ -91,13 +98,35 @@ export default {
     }
 
     .product-details_details-desc {
-      margin-right: 79px;
+      margin-right: 15px;
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
       flex-direction: column;
       gap: 35px;
       overflow-wrap: break-word;
+      width: 100%;
+      max-width: 330px;
+      margin-right: 15px;
+
+      @include breakpoint-up(sm) {
+        max-width: 376px;
+        gap: 35px;
+        margin-right: 79px;
+      }
+
+      @include breakpoint-up(md) {
+        max-width: 476px;
+        font-size: 30px;
+      }
+
+      @include breakpoint-up(lg) {
+        max-width: 470px;
+      }
+
+      @include breakpoint-up(xl) {
+        max-width: 576px;
+      }
 
       strong {
         color: var(--secondary-color);
@@ -124,14 +153,14 @@ export default {
       p {
         width: 100%;
         color: var(--secondary-color);
-        max-width: 100%;
+        padding: 0px 10px;
         font-size: 16px;
+        margin-bottom: 0px;
         font-weight: 400;
         line-height: normal;
         text-align: right;
 
         @include breakpoint-up(sm) {
-          max-width: 100%;
           font-size: 18px;
         }
 
@@ -140,12 +169,10 @@ export default {
         }
 
         @include breakpoint-up(lg) {
-          max-width: 376px;
           font-size: 22px;
         }
 
         @include breakpoint-up(xl) {
-          max-width: 576px;
           font-size: 30px;
         }
       }
