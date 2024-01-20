@@ -11,7 +11,12 @@
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
             <NuxtLink to="/order"> سفارش محصولات </NuxtLink>
           </BaseButton>
-          <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
+          <BaseButton
+            data-bs-toggle="modal"
+            data-bs-target="#baseModal"
+            :isSvgLeft="true"
+            arrowSvgName="vit--arrow-left-top"
+          >
             مطالعه بیشتر
           </BaseButton>
         </div>

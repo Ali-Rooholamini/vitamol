@@ -9,6 +9,22 @@
       content="محصولات آرایش بهداشتی ویتامول"
     />
 
+    <BaseModal v-if="productData" size="lg">
+      <div class="body-content">
+        <p>
+          {{ productData.description }}
+        </p>
+        <div class="body-contet_button-wrapper">
+          <BaseButton data-bs-dismiss="modal">
+            <NuxtLink to="/order">ثبت سفارش محصول</NuxtLink>
+          </BaseButton>
+          <BaseButton class="body-contet_button-close" data-bs-dismiss="modal">
+            بستن توضحات
+          </BaseButton>
+        </div>
+      </div>
+    </BaseModal>
+
     <PageTitle class="category-page_title">
       {{ categoryPageTitle.name }}
     </PageTitle>
@@ -107,6 +123,8 @@ import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 import ProductDetails from "~/components/page/categories/ProductDetails.vue";
+import BaseModal from "~/components/common/BaseModal.vue";
+import BaseButton from "~/components/global/BaseButton.vue";
 
 definePageMeta({
   middleware: ["categories-page"],
@@ -119,6 +137,8 @@ export default {
     SubCategories,
     ProductCarousel,
     ProductDetails,
+    BaseModal,
+    BaseButton,
   },
 
   data() {
@@ -353,5 +373,41 @@ export default {
   text-align: center;
   background-color: var(--secondary-color);
   color: var(--color-white);
+}
+
+.body-content {
+  width: 100%;
+
+  > p {
+    text-align: justify;
+    width: 100%;
+    margin-bottom: 0px;
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 400;
+
+    @include breakpoint-up(sm) {
+      font-size: 22px;
+    }
+    @include breakpoint-up(md) {
+      font-size: 26px;
+    }
+    @include breakpoint-up(lg) {
+      font-size: 30px;
+    }
+  }
+
+  .body-contet_button-wrapper {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    > .body-contet_button-close {
+      background-color: var(--color-white);
+      color: var(--secondary-color);
+    }
+  }
 }
 </style>
