@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="baseModal" tabindex="-1">
+  <div class="modal fade" :id="modalName" tabindex="-1">
     <div class="modal-dialog" :class="{ 'modal-lg': size === 'lg' }">
       <div class="modal-content">
         <div class="modal-body">
@@ -28,6 +28,11 @@ export default {
       type: String,
       required: false,
       default: "",
+    },
+
+    modalName: {
+      type: String,
+      required: true,
     },
   },
 };

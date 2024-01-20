@@ -9,7 +9,7 @@
       content="محصولات آرایش بهداشتی ویتامول"
     />
 
-    <BaseModal v-if="productData" size="lg">
+    <BaseModal v-if="productData" size="lg" modalName="baseModal">
       <div class="body-content">
         <p>
           {{ productData.description }}
