@@ -1,5 +1,14 @@
 <template>
   <div>
+    <Meta name="title" content="وبلاگ ویتامول" />
+    <Meta name="og:title" property="og:title" content="وبلاگ ویتامول" />
+    <Meta name="description" content="وبلاگ محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="وبلاگ محصولات آرایش بهداشتی ویتامول"
+    />
+
     <PageTitle class="blog-page_title">مقالات مفید ویتامول</PageTitle>
 
     <section class="container blog-page_post-wrapper">

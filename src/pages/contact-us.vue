@@ -1,5 +1,14 @@
 <template>
   <div class="contact-us">
+    <Meta name="title" content="تماس با ویتامول" />
+    <Meta name="og:title" property="og:title" content="تماس با ویتامول" />
+    <Meta name="description" content="محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="محصولات آرایش بهداشتی ویتامول"
+    />
+
     <PageTitle class="contact-us_first-title">تماس با ما</PageTitle>
 
     <section class="contact-us_main">

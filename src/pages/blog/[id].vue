@@ -1,5 +1,18 @@
 <template>
   <div class="post">
+    <Meta name="title" :content="postDetail.title + '&nbsp; ویتامول'" />
+    <Meta
+      name="og:title"
+      property="og:title"
+      :content="postDetail.title + '&nbsp; ویتامول'"
+    />
+    <Meta name="description" content="وبلاگ محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="وبلاگ محصولات آرایش بهداشتی ویتامول"
+    />
+
     <PageTitle>{{ postDetail.title || "..." }}</PageTitle>
     <div class="post_description">
       <div class="post_bg-color"></div>

@@ -1,5 +1,14 @@
 <template>
   <div class="aboutus-page">
+    <Meta name="title" content="درباره ویتامول" />
+    <Meta name="og:title" property="og:title" content="درباره ویتامول" />
+    <Meta name="description" content="محصولات آرایش بهداشتی ویتامول" />
+    <Meta
+      name="og:description"
+      property="og:description"
+      content="محصولات آرایش بهداشتی ویتامول"
+    />
+
     <PageTitle class="aboutus-page_title">درباره ویتامول</PageTitle>
 
     <section class="container aboutus-page_aboutus">
