@@ -73,7 +73,6 @@
             class="contact-us_form-input mb-4"
             placeholder="نام و نام خانوادگی:"
             v-model:value="contactUsForm.fullName"
-            :min="5"
           />
           <BaseFormTextInput
             class="contact-us_form-input mb-4"
@@ -122,7 +121,12 @@
                 </select>
               </div>
             </div>
-            <BaseButton class="contact-us_form-submit-button">ارسال</BaseButton>
+            <BaseButton
+              class="contact-us_form-submit-button"
+              buttonType="submit"
+            >
+              ارسال
+            </BaseButton>
           </div>
         </form>
       </div>
@@ -159,8 +163,7 @@
           name="hiringDesc"
           v-model="hiringFormData.description"
           placeholder="توضیحات"
-        >
-        </textarea>
+        />
         <div class="contact-us_form-download">
           <span>دانلود فایل استخدام:</span>
           <BaseButton class="contact-us_form-hiring-button">دانلود</BaseButton>
@@ -218,6 +221,21 @@ export default {
       ];
     },
   },
+
+  // methods: {
+  //   sendContactUs() {
+  //     if (
+  //       !this.contactUsForm.fullName &&
+  //       !this.contactUsForm.phoneNumber &&
+  //       !this.contactUsForm.email &&
+  //       !this.contactUsForm.weekDay &&
+  //       !this.contactUsForm.dayHour
+  //     ) {
+  //       console.log("asd");
+  //       return;
+  //     }
+  //   },
+  // },
 };
 </script>
 

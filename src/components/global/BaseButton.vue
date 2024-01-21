@@ -1,5 +1,5 @@
 <template>
-  <button class="base-button" type="button">
+  <button class="base-button" :type="buttonType">
     <nuxt-icon class="is-right" v-if="isSvgRight" :name="svgPath" />
     <slot />
     <nuxt-icon class="is-left" v-if="isSvgLeft" :name="svgPath" />
@@ -25,6 +25,11 @@ export default {
       type: String,
       required: false,
       default: "",
+    },
+    buttonType: {
+      type: String,
+      required: false,
+      default: "button",
     },
   },
 
