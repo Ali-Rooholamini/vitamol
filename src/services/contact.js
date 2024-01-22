@@ -10,23 +10,12 @@ export function setContactUs(axios, fullname, phone, email, day, hour) {
   return axios.post(`/contact-us/`, data);
 }
 
-export function setHiringData(
-  axios,
-  fullname,
-  phone,
-  description,
-  email,
-  pdf_file
-) {
-  const data = {
-    fullname,
-    phone,
-    description,
-    email,
-    pdf_file,
+export function setHiringData(axios, formData) {
+  const headers = {
+    "Content-Type": "multipart/form-data",
   };
 
-  return axios.post(`/hiring/`, data);
+  return axios.post(`/hiring/`, formData, { headers: headers });
 }
 
 export default {

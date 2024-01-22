@@ -173,8 +173,26 @@
           <BaseButton class="contact-us_form-hiring-button">دانلود</BaseButton>
         </div>
         <div class="contact-us_form-upload">
-          <span>آپلود فایل رزومه (pdf):</span>
-          <BaseButton class="contact-us_form-hiring-button">ارسال</BaseButton>
+          <span>
+            آپلود فایل رزومه (pdf): {{ hiringFormData?.file?.name || "" }}
+          </span>
+          <input
+            ref="hiringFile"
+            @change="setHiringFile"
+            type="file"
+            accept=".pdf"
+            multiple="false"
+            hidden
+          />
+          <BaseButton
+            class="contact-us_form-hiring-button"
+            @click="openUploadFile"
+          >
+            <div v-if="setHireLoading" class="spinner-border">
+              <span class="sr-only"></span>
+            </div>
+            <span v-else>ارسال</span>
+          </BaseButton>
         </div>
       </form>
     </section>
@@ -182,7 +200,7 @@
 </template>
 
 <script>
-import { setContactUs } from "~/services/contact.js";
+import { setContactUs, setHiringData } from "~/services/contact.js";
 
 import PageTitle from "~/components/common/PageTitle.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
@@ -206,11 +224,13 @@ export default {
         weekDay: "موضوع",
         dayHour: "موضوع",
       },
+      setHireLoading: false,
       hiringFormData: {
         fullName: "",
         phoneNumber: "",
         email: "",
         description: "",
+        file: null,
       },
     };
   },
@@ -230,6 +250,63 @@ export default {
   },
 
   methods: {
+    setHiringFile(event) {
+      if (event.target.files.length === 0) {
+        return;
+      }
+
+      this.hiringFormData.file = null;
+      this.hiringFormData.file = event.target.files[0];
+
+      this.sendHiring();
+    },
+
+    openUploadFile() {
+      if (
+        this.hiringFormData.fullName.length === 0 ||
+        this.hiringFormData.phoneNumber.length === 0 ||
+        this.hiringFormData.email.length === 0
+      ) {
+        return alert("لطفا مقادیر فیلدهای دیگر فرم را وارد کنید !");
+      }
+
+      this.$refs.hiringFile.click();
+    },
+
+    sendHiring() {
+      if (
+        this.hiringFormData.fullName.length === 0 ||
+        this.hiringFormData.phoneNumber.length === 0 ||
+        this.hiringFormData.email.length === 0 ||
+        this.hiringFormData.file === null
+      ) {
+        alert("خطایی رخ داده است");
+        return;
+      }
+
+      this.setHireLoading = true;
+
+      const formData = new FormData();
+      formData.append("fullname", this.hiringFormData.fullName);
+      formData.append("phone", this.hiringFormData.phoneNumber);
+      formData.append("description", this.hiringFormData.description);
+      formData.append("email", this.hiringFormData.email);
+      formData.append("pdf_file", this.hiringFormData.file);
+
+      setHiringData(this.$axios, formData)
+        .then((res) => {
+          console.log(res);
+          alert("ارسال موفقیت آمیز بود");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("مشکلی در ارسال رخ داده است.");
+        })
+        .finally(() => {
+          this.setHireLoading = false;
+        });
+    },
+
     sendContactUs() {
       if (
         this.contactUsForm.fullName.length === 0 ||
@@ -638,6 +715,12 @@ export default {
       border: 1px solid var(--secondary-color);
       background-color: var(--color-white);
       border-radius: 8px;
+
+      > span {
+        width: 50%;
+        overflow-wrap: break-word;
+        overflow: hidden;
+      }
     }
 
     .contact-us_form-hiring-button {
