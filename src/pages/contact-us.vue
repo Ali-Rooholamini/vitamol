@@ -100,7 +100,7 @@
                   required
                   v-model="contactUsForm.weekDay"
                 >
-                  <option value="0" disabled selected>روز</option>
+                  <option value="موضوع" disabled selected>روز</option>
                   <option
                     v-for="(day, index) in weekDays"
                     :key="index"
@@ -115,7 +115,7 @@
                   required
                   v-model="contactUsForm.dayHour"
                 >
-                  <option value="0" disabled selected>ساعت</option>
+                  <option value="موضوع" disabled selected>ساعت</option>
                   <option value="فبل از ظهر">قبل از ظهر</option>
                   <option value="بعد از ظهر">بعد از ظهر</option>
                 </select>
@@ -124,8 +124,12 @@
             <BaseButton
               class="contact-us_form-submit-button"
               buttonType="submit"
+              @click="sendContactUs"
             >
-              ارسال
+              <div v-if="loading" class="spinner-border">
+                <span class="sr-only"></span>
+              </div>
+              <span v-else>ارسال</span>
             </BaseButton>
           </div>
         </form>
@@ -178,6 +182,8 @@
 </template>
 
 <script>
+import { setContactUs } from "~/services/contact.js";
+
 import PageTitle from "~/components/common/PageTitle.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 import BaseFormTextInput from "~/components/global/BaseFormTextInput.vue";
@@ -192,12 +198,13 @@ export default {
 
   data() {
     return {
+      loading: false,
       contactUsForm: {
         fullName: "",
         phoneNumber: "",
         email: "",
-        weekDay: "0",
-        dayHour: "0",
+        weekDay: "موضوع",
+        dayHour: "موضوع",
       },
       hiringFormData: {
         fullName: "",
@@ -222,20 +229,43 @@ export default {
     },
   },
 
-  // methods: {
-  //   sendContactUs() {
-  //     if (
-  //       !this.contactUsForm.fullName &&
-  //       !this.contactUsForm.phoneNumber &&
-  //       !this.contactUsForm.email &&
-  //       !this.contactUsForm.weekDay &&
-  //       !this.contactUsForm.dayHour
-  //     ) {
-  //       console.log("asd");
-  //       return;
-  //     }
-  //   },
-  // },
+  methods: {
+    sendContactUs() {
+      if (
+        this.contactUsForm.fullName.length === 0 ||
+        this.contactUsForm.phoneNumber.length === 0 ||
+        this.contactUsForm.email.length === 0 ||
+        this.contactUsForm.weekDay === "موضوع" ||
+        this.contactUsForm.dayHour === "موضوع"
+      ) {
+        return;
+      }
+
+      this.loading = true;
+
+      setContactUs(
+        this.$axios,
+        this.contactUsForm.fullName,
+        this.contactUsForm.phoneNumber,
+        this.contactUsForm.email,
+        this.contactUsForm.weekDay,
+        this.contactUsForm.dayHour
+      )
+        .then(() => {
+          this.contactUsForm.fullName = "";
+          this.contactUsForm.phoneNumber = "";
+          this.contactUsForm.email = "";
+          this.contactUsForm.weekDay = "";
+          this.contactUsForm.dayHour = "";
+        })
+        .catch(({ response }) => {
+          console.error(response.data);
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+  },
 };
 </script>
 

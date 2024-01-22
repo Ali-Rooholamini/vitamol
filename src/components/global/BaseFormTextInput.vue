@@ -111,7 +111,7 @@ export default {
     },
 
     onChange(event) {
-      if (!this.regex.test(event.target.value)) {
+      if (this.regex && !this.regex.test(event.target.value)) {
         this.hasError = true;
       }
     },
