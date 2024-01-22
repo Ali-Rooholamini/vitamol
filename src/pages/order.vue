@@ -13,12 +13,9 @@
 
     <div class="container-fluid">
       <div class="container order-page_content">
-        <div
-          v-if="butterfliesImgLink.length > 0"
-          class="container order-page_content_butterflies d-none d-xl-block"
-        >
+        <div class="container order-page_content_butterflies d-none d-xl-block">
           <img
-            :src="butterfliesImgLink"
+            src="~/assets/images/butterflies-group.webp"
             width="134"
             height="580"
             loading="lazy"
@@ -67,16 +64,6 @@ export default {
   components: {
     PageTitle,
     BaseButton,
-  },
-
-  data() {
-    return {
-      butterfliesImgLink: "",
-    };
-  },
-
-  mounted() {
-    this.butterfliesImgLink = "/_nuxt/assets/images/butterflies-group.webp";
   },
 };
 </script>
