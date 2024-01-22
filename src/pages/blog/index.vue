@@ -24,7 +24,9 @@
             :class="{ 'blue-bg': post.id % 2 === 0 }"
           >
             <NuxtImg
-              :src="post?.images[0]?.image || '/images/header-image.png'"
+              :src="
+                'http://api.vitamolcare.com' + post?.images[0]?.resized_image
+              "
               format="webp"
               width="237"
               height="330"

@@ -19,7 +19,10 @@
       <template v-if="!loading">
         <div class="container post_description-detail">
           <NuxtImg
-            :src="postDetail?.images[0]?.image || '/images/header-image.png'"
+            :src="
+              'http://api.vitamolcare.com' +
+              postDetail?.images[0]?.original_image
+            "
             width="464"
             height="637"
             format="webp"

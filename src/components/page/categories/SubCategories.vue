@@ -5,9 +5,7 @@
       :key="cat.id"
       class="sub-categories_category"
       :class="{ active: activeCats === cat.id }"
-      :style="`background-image: url(${
-        cat.image || '/images/header-image.png'
-      })`"
+      :style="`background-image: url(http://api.vitamolcare.com${cat.image})`"
       @click="setActive(cat.id)"
     >
       <div class="sub-categories_category-filter"></div>

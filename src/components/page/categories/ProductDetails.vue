@@ -25,7 +25,7 @@
     <div class="product-details_image">
       <NuxtImg
         v-if="productDetail?.images[0]?.image"
-        :src="productDetail.images[0].image"
+        :src="'http://api.vitamolcare.com' + productDetail.images[0].image"
         format="webp"
         width="350"
         loading="lazy"

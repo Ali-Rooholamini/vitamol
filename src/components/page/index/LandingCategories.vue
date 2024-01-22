@@ -18,7 +18,7 @@
         </div>
         <div class="landing-categories_category-left-side">
           <div class="landing-categories_category-left-side_text">
-            <strong>برای تو که موهات برات ارزشمنده!</strong>
+            <strong>برای تو که عاشق موهات هستی</strong>
             <div>
               <h3>محصولات مراقبت از مو ویتـــامول</h3>
               <p>
@@ -72,7 +72,7 @@
         </div>
         <div class="landing-categories_category-left-side">
           <div class="landing-categories_category-left-side_text">
-            <strong>برای تو که پوستت ارزشمنده!</strong>
+            <strong>برای تو که پوستت برات مهم ترینه</strong>
             <div>
               <h3>محصولات مراقبت از پوست ویتـــامول</h3>
               <p>
@@ -117,7 +117,7 @@
         </div>
         <div class="landing-categories_category-left-side">
           <div class="landing-categories_category-left-side_text">
-            <strong>برای تو که رنگ موهات برات مهمه!</strong>
+            <strong>برای تو که رنگ موهات دلبره</strong>
             <div>
               <h3>محصولات مراقبت از مو ویتـــامول</h3>
               <p>
