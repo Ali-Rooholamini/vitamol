@@ -295,7 +295,11 @@ export default {
 
       setHiringData(this.$axios, formData)
         .then((res) => {
-          console.log(res);
+          this.hiringFormData.fullName = "";
+          this.hiringFormData.phoneNumber = "";
+          this.hiringFormData.description = "";
+          this.hiringFormData.email = "";
+          this.hiringFormData.file = null;
           alert("ارسال موفقیت آمیز بود");
         })
         .catch((err) => {
@@ -332,10 +336,12 @@ export default {
           this.contactUsForm.fullName = "";
           this.contactUsForm.phoneNumber = "";
           this.contactUsForm.email = "";
-          this.contactUsForm.weekDay = "";
-          this.contactUsForm.dayHour = "";
+          this.contactUsForm.weekDay = "موضوع";
+          this.contactUsForm.dayHour = "موضوع";
+          alert("اطلاعات با موفقیت ارسال شد");
         })
         .catch(({ response }) => {
+          alert("خطایی در ارسال اطلاعات به وجود آمده است!");
           console.error(response.data);
         })
         .finally(() => {
