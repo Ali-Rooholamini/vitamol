@@ -170,7 +170,14 @@
         />
         <div class="contact-us_form-download">
           <span>دانلود فایل استخدام:</span>
-          <BaseButton class="contact-us_form-hiring-button">دانلود</BaseButton>
+          <BaseButton class="contact-us_form-hiring-button">
+            <NuxtLink
+              to="http://vitamolcare.com/p17- فرم پرسشنامه استخدامی.rar"
+              target="_blank"
+            >
+              دانلود
+            </NuxtLink>
+          </BaseButton>
         </div>
         <div class="contact-us_form-upload">
           <span>

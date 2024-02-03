@@ -114,7 +114,7 @@
 
         <!-- login and serach buttons -->
         <div class="header_btn-wrapper">
-          <button class="btn me-2 mb-1" type="button">
+          <button class="btn me-2 mb-1 d-none" type="button">
             <nuxt-icon class="header_btn-search" name="vit--search" filled />
             <span class="d-none d-lg-inline-block">جست و جو</span>
           </button>
