@@ -59,12 +59,7 @@
               :eventImages="eventDetails.images"
             />
 
-            <NuxtImg
-              v-else
-              src="images/header-image.png"
-              format="webp"
-              alt="مراقبت از پوست"
-            />
+            <img v-else src="/images/header-image.png" alt="مراقبت از پوست" />
 
             <div class="header-slider_bottom-left-design">
               <svg
