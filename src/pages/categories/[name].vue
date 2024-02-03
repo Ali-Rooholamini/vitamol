@@ -61,6 +61,7 @@
         />
         <NuxtImg
           class="butterfly-bottom d-none d-lg-block"
+          :class="routeCategoryName"
           src="/images/vit-butterfly.png"
           format="webp"
           loading="lazy"
@@ -89,29 +90,35 @@
         </div>
       </template>
       <template v-else>
-        <div
-          v-if="selectedCategoryData === null"
-          class="container alert"
-          role="alert"
-        >
-          محصولی یافت نشد
-        </div>
-        <template v-else>
-          <div>
-            <ProductCarousel
-              :productList="selectedCategoryData"
-              @selectedProduct="selectedProductId = $event"
-            />
+        <div v-show="routeCategoryName !== 'hue-harmony'">
+          <div
+            v-if="selectedCategoryData === null"
+            class="container alert"
+            role="alert"
+          >
+            محصولی یافت نشد
           </div>
-        </template>
+          <template v-else>
+            <div>
+              <ProductCarousel
+                :productList="selectedCategoryData"
+                @selectedProduct="selectedProductId = $event"
+              />
+            </div>
+          </template>
+        </div>
       </template>
     </section>
 
     <section
       v-if="selectedProductId !== null && productData !== null"
       class="container category-page_product-details"
+      :class="routeCategoryName"
     >
-      <ProductDetails :productDetail="productData" />
+      <ProductDetails
+        :productDetail="productData"
+        :isHueHarmony="routeCategoryName === 'hue-harmony'"
+      />
     </section>
   </div>
 </template>
@@ -144,6 +151,7 @@ export default {
   data() {
     return {
       subCategories: [],
+      routeCategoryName: "",
       isCatLoading: false,
       isProductsLoding: false,
       selectedCategoryId: null,
@@ -153,10 +161,11 @@ export default {
   },
 
   created() {
+    this.routeCategoryName = this.$route.params.name;
     let categoriesId = 0;
     this.isCatLoading = true;
 
-    switch (this.$route.params.name) {
+    switch (this.routeCategoryName) {
       case "mane-guard":
         categoriesId = 1;
         break;
@@ -355,6 +364,10 @@ export default {
       left: 35%;
     }
 
+    .butterfly-bottom.hue-harmony {
+      top: 50% !important;
+    }
+
     .butterfly-top {
       top: 0%;
       left: 38%;
@@ -365,6 +378,12 @@ export default {
 
 .category-page_product-details {
   margin-bottom: 116px;
+}
+
+.category-page_product-details.hue-harmony {
+  @include breakpoint-up(md) {
+    margin-top: 100px;
+  }
 }
 
 .spinner-border {

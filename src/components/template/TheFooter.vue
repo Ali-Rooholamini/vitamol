@@ -31,7 +31,14 @@
             <li><NuxtLink to="/">محصولات</NuxtLink></li>
             <li><NuxtLink to="/">محصولات سالنی</NuxtLink></li>
             <li><NuxtLink to="/">دیگر محصولات</NuxtLink></li>
-            <li><NuxtLink to="/">دانلود کاتالوگ</NuxtLink></li>
+            <li>
+              <NuxtLink
+                to="http://vitamolcare.com/vitamol-cat.pdf"
+                target="_blank"
+              >
+                دانلود کاتالوگ
+              </NuxtLink>
+            </li>
           </ul>
         </div>
         <div class="col-6 mt-5 mt-md-0 col-md-3 col-lg-2">

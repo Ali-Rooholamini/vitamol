@@ -12,6 +12,19 @@
             <NuxtLink to="/order"> سفارش محصولات </NuxtLink>
           </BaseButton>
           <BaseButton
+            v-if="isHueHarmony"
+            :isSvgLeft="true"
+            arrowSvgName="vit--arrow-left-top"
+          >
+            <NuxtLink
+              to="http://vitamolcare.com/HAIRCOLOR-SmartCatalog-Ver01.pdf"
+              target="_blank"
+            >
+              مشاهده کالیته رنگی
+            </NuxtLink>
+          </BaseButton>
+          <BaseButton
+            v-else
             data-bs-toggle="modal"
             data-bs-target="#baseModal"
             :isSvgLeft="true"
@@ -47,6 +60,11 @@ export default {
     productDetail: {
       type: Object,
       required: true,
+    },
+    isHueHarmony: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
 };
