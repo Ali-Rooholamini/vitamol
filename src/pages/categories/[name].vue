@@ -127,7 +127,7 @@
       <ProductDetails
         :productDetail="productData"
         :isHueHarmony="routeCategoryName === 'hue-harmony'"
-        @showLongDesc="test"
+        @showLongDesc="getLongDesc"
       />
     </section>
   </div>
@@ -268,7 +268,7 @@ export default {
       this.isProductsLoding = false;
     },
 
-    test() {
+    getLongDesc() {
       if (this.selectedProductId === null) {
         return;
       }
