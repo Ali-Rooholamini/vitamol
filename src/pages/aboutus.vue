@@ -23,6 +23,7 @@
       </p>
       <div class="aboutus-page_image-wrapper">
         <NuxtImg
+          preload
           src="/images/about-us.jpg"
           format="webp"
           width="235"
