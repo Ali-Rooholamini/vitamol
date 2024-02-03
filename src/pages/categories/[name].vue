@@ -57,7 +57,10 @@
       <div class="category-page_category_bottom-color"></div>
     </section>
 
-    <section class="container-fluid category-page_products-carousel">
+    <section
+      class="container-fluid category-page_products-carousel"
+      ref="carouselView"
+    >
       <div class="container">
         <strong> برای تو که دنبال درخشش موهات هستی !</strong>
         <NuxtImg
@@ -266,6 +269,8 @@ export default {
       }
 
       this.isProductsLoding = false;
+
+      this.$refs.carouselView.scrollIntoView({ behavior: "smooth" });
     },
 
     getLongDesc() {
