@@ -101,6 +101,20 @@ export default defineComponent({
   margin-bottom: 150px;
 }
 
+:deep(.carousel__next),
+:deep(.carousel__prev) {
+  display: none;
+  box-sizing: content-box;
+  color: #6c6c6c;
+  border-radius: 50%;
+  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(200deg, #eaa7c1 65%, rgba(234, 167, 193, 0) 100%);
+
+  @include breakpoint-up(md) {
+    display: flex;
+  }
+}
+
 .carousel__item {
   background-color: var(--color-white);
   width: 100%;
