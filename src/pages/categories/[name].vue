@@ -11,9 +11,18 @@
 
     <BaseModal v-if="productData" size="lg" modalName="baseModal">
       <div class="body-content">
-        <p>
+        <div v-if="isFieldLoading" class="w-100 d-flex justify-content-center">
+          <div class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+        <p v-else-if="!isFieldLoading && productFieldDesc.length > 0">
+          {{ productFieldDesc }}
+        </p>
+        <p v-else>
           {{ productData.description }}
         </p>
+
         <div class="body-contet_button-wrapper">
           <BaseButton data-bs-dismiss="modal">
             <NuxtLink to="/order">ثبت سفارش محصول</NuxtLink>
@@ -118,13 +127,18 @@
       <ProductDetails
         :productDetail="productData"
         :isHueHarmony="routeCategoryName === 'hue-harmony'"
+        @showLongDesc="test"
       />
     </section>
   </div>
 </template>
 
 <script>
-import { getSubCategories, getProductList } from "~/services/product.js";
+import {
+  getSubCategories,
+  getProductList,
+  getProductDetails,
+} from "~/services/product.js";
 
 import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
@@ -154,6 +168,8 @@ export default {
       routeCategoryName: "",
       isCatLoading: false,
       isProductsLoding: false,
+      isFieldLoading: false,
+      productFieldDesc: "",
       selectedCategoryId: null,
       selectedCategoryData: null,
       selectedProductId: null,
@@ -250,6 +266,31 @@ export default {
       }
 
       this.isProductsLoding = false;
+    },
+
+    test() {
+      if (this.selectedProductId === null) {
+        return;
+      }
+
+      this.productFieldDesc = "";
+      this.isFieldLoading = true;
+
+      getProductDetails(
+        this.$axios,
+        this.selectedCategoryData[this.selectedProductId].id
+      )
+        .then(({ data }) => {
+          if (data.field.length > 0) {
+            this.productFieldDesc = data.field;
+          }
+        })
+        .catch((err) => {
+          console.warn(err);
+        })
+        .finally(() => {
+          this.isFieldLoading = false;
+        });
     },
   },
 };
@@ -402,6 +443,7 @@ export default {
   width: 100%;
 
   > p {
+    overflow: hidden;
     text-align: justify;
     width: 100%;
     margin-bottom: 0px;

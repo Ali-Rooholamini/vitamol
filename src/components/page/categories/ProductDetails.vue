@@ -29,6 +29,7 @@
             data-bs-target="#baseModal"
             :isSvgLeft="true"
             arrowSvgName="vit--arrow-left-top"
+            @click="$emit('showLongDesc')"
           >
             مطالعه بیشتر
           </BaseButton>
