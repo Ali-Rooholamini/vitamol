@@ -284,7 +284,11 @@ export default {
 
   @include breakpoint-up(md) {
     margin-top: 70px;
-    margin-bottom: 109px;
+  }
+
+  @include breakpoint-up(lg) {
+    margin-top: 70px;
+    margin-bottom: 0px !important;
   }
 
   strong {
