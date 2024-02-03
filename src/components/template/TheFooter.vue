@@ -44,7 +44,10 @@
         <div class="col-6 mt-5 mt-md-0 col-md-3 col-lg-2">
           <span>راه‌های ارتباطی</span>
           <div class="footer_social-section">
-            <NuxtLink to="/">
+            <NuxtLink
+              to="https://www.instagram.com/vitamolcare?igsh=MXdnb2hoZjZkYzhhYg=="
+              target="_blank"
+            >
               <nuxt-icon name="social/instagram" filled />
             </NuxtLink>
             <NuxtLink to="/">

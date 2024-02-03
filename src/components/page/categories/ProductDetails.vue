@@ -160,6 +160,7 @@ export default {
         color: var(--secondary-color);
         padding: 0px 10px;
         font-size: 16px;
+        text-align: justify !important;
         margin-bottom: 0px;
         font-weight: 400;
         line-height: normal;
