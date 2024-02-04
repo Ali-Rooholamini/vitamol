@@ -39,7 +39,7 @@
     <div class="product-details_image">
       <NuxtImg
         v-if="productDetail?.images[0]?.image"
-        :src="'http://api.vitamolcare.com' + productDetail.images[0].image"
+        :src="apiOriginProtocol + productDetail.images[0].image"
         format="webp"
         width="350"
         loading="lazy"
@@ -66,6 +66,17 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+  },
+
+  computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
     },
   },
 };

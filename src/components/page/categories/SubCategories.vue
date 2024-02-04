@@ -5,7 +5,7 @@
       :key="cat.id"
       class="sub-categories_category"
       :class="{ active: activeCats === cat.id }"
-      :style="`background-image: url(http://api.vitamolcare.com${cat.image})`"
+      :style="`background-image: url(${apiOriginProtocol + cat.image})`"
       @click="setActive(cat.id)"
     >
       <div class="sub-categories_category-filter"></div>
@@ -33,6 +33,17 @@ export default {
       default: () => {
         return [{}];
       },
+    },
+  },
+
+  computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
     },
   },
 

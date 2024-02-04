@@ -8,7 +8,7 @@
       <div class="carousel__item">
         <NuxtImg
           v-if="product?.images[0]?.image"
-          :src="'http://api.vitamolcare.com' + product.images[0].image"
+          :src="apiOriginProtocol + product.images[0].image"
           format="webp"
           :alt="product.name"
           loading="lazy"
@@ -68,6 +68,15 @@ export default defineComponent({
   },
 
   computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
+    },
+
     itemToShow() {
       if (!this.isMiddle && !this.isMobile) {
         return 5;

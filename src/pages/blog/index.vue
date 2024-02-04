@@ -24,9 +24,7 @@
             :class="{ 'blue-bg': post.id % 2 === 0 }"
           >
             <NuxtImg
-              :src="
-                'http://api.vitamolcare.com' + post?.images[0]?.resized_image
-              "
+              :src="apiOriginProtocol + post?.images[0]?.resized_image"
               format="webp"
               width="237"
               height="330"
@@ -87,6 +85,17 @@ export default {
       .finally(() => {
         this.loading = false;
       });
+  },
+
+  computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
+    },
   },
 
   methods: {

@@ -19,10 +19,7 @@
       <template v-if="!loading">
         <div class="container post_description-detail">
           <NuxtImg
-            :src="
-              'http://api.vitamolcare.com' +
-              postDetail?.images[0]?.original_image
-            "
+            :src="apiOriginProtocol + postDetail?.images[0]?.original_image"
             width="464"
             height="637"
             format="webp"
@@ -81,6 +78,17 @@ export default {
 
         this.loading = false;
       });
+  },
+
+  computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
+    },
   },
 };
 </script>

@@ -5,7 +5,7 @@
         <div class="carousel__item">
           <NuxtImg
             preload
-            :src="`http://api.vitamolcare.com${event.image}`"
+            :src="apiOriginProtocol + event.image"
             format="webp"
             width="395"
             height="549"
@@ -35,6 +35,17 @@ export default defineComponent({
       type: [Array, Object],
       required: true,
       default: null,
+    },
+  },
+
+  computed: {
+    apiOriginProtocol() {
+      if (process.browser) {
+        const protocol = window.location.protocol;
+        return `${protocol}//api.vitamolcare.com`;
+      } else {
+        return "https://api.vitamolcare.com";
+      }
     },
   },
 });
