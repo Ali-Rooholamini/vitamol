@@ -1,10 +1,10 @@
 <template>
   <div class="post">
-    <Meta name="title" :content="mockPostDetails.title + '&nbsp; ویتامول'" />
+    <Meta name="title" :content="postDetail.title + '&nbsp; ویتامول'" />
     <Meta
       name="og:title"
       property="og:title"
-      :content="mockPostDetails.title + '&nbsp; ویتامول'"
+      :content="postDetail.title + '&nbsp; ویتامول'"
     />
     <Meta name="description" content="وبلاگ محصولات آرایش بهداشتی ویتامول" />
     <Meta
@@ -13,19 +13,19 @@
       content="وبلاگ محصولات آرایش بهداشتی ویتامول"
     />
 
-    <PageTitle>{{ mockPostDetails.title || "..." }}</PageTitle>
+    <PageTitle>{{ postDetail.title || "..." }}</PageTitle>
     <div class="post_description">
       <div class="post_bg-color"></div>
       <template v-if="!loading">
         <div class="container post_description-detail">
           <NuxtImg
-            :src="mockPostDetails?.images[0]?.original_image"
+            :src="postDetail?.images[0]?.original_image"
             width="464"
             height="637"
             format="webp"
           />
           <p class="post_description-content">
-            {{ mockPostDetails.description }}
+            {{ postDetail.description }}
           </p>
         </div>
       </template>
