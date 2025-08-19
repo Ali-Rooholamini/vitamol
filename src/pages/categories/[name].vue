@@ -150,6 +150,11 @@ import ProductDetails from "~/components/page/categories/ProductDetails.vue";
 import BaseModal from "~/components/common/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 
+import {
+  getSubCategories as mockSubcategories,
+  getProductList as mockSelectedCategory,
+} from "~/mockers/mockers";
+
 definePageMeta({
   middleware: ["categories-page"],
 });
@@ -167,14 +172,15 @@ export default {
 
   data() {
     return {
-      subCategories: [],
+      subCategories: mockSubcategories || [],
       routeCategoryName: "",
       isCatLoading: false,
       isProductsLoding: false,
       isFieldLoading: false,
-      productFieldDesc: "",
+      productFieldDesc:
+        "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
       selectedCategoryId: null,
-      selectedCategoryData: null,
+      selectedCategoryData: mockSelectedCategory || null,
       selectedProductId: null,
     };
   },
@@ -182,7 +188,7 @@ export default {
   created() {
     this.routeCategoryName = this.$route.params.name;
     let categoriesId = 0;
-    this.isCatLoading = true;
+    // this.isCatLoading = true;
 
     switch (this.routeCategoryName) {
       case "mane-guard":
@@ -202,16 +208,16 @@ export default {
         break;
     }
 
-    getSubCategories(this.$axios, categoriesId)
-      .then(({ data }) => {
-        this.subCategories = JSON.parse(JSON.stringify(data));
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        this.isCatLoading = false;
-      });
+    // getSubCategories(this.$axios, categoriesId)
+    //   .then(({ data }) => {
+    //     this.subCategories = JSON.parse(JSON.stringify(data));
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
+    //   .finally(() => {
+    //     this.isCatLoading = false;
+    //   });
   },
 
   computed: {
@@ -254,21 +260,21 @@ export default {
   methods: {
     async getProductList(event) {
       this.selectedCategoryId = null;
-      this.isProductsLoding = true;
+      // this.isProductsLoding = true;
       this.selectedCategoryId = event;
 
-      const { data, error } = await getProductList(
-        this.$axios,
-        this.selectedCategoryId
-      );
+      // const { data, error } = await getProductList(
+      //   this.$axios,
+      //   this.selectedCategoryId
+      // );
 
-      if (data.length !== 0) {
-        this.selectedCategoryData = JSON.parse(JSON.stringify(data));
-      } else {
-        this.selectedCategoryData = null;
-      }
+      // if (data.length !== 0) {
+      //   this.selectedCategoryData = JSON.parse(JSON.stringify(data));
+      // } else {
+      //   this.selectedCategoryData = null;
+      // }
 
-      this.isProductsLoding = false;
+      // this.isProductsLoding = false;
 
       this.$refs.carouselView.scrollIntoView({ behavior: "smooth" });
     },
@@ -278,24 +284,23 @@ export default {
         return;
       }
 
-      this.productFieldDesc = "";
-      this.isFieldLoading = true;
+      // this.isFieldLoading = true;
 
-      getProductDetails(
-        this.$axios,
-        this.selectedCategoryData[this.selectedProductId].id
-      )
-        .then(({ data }) => {
-          if (data.field.length > 0) {
-            this.productFieldDesc = data.field;
-          }
-        })
-        .catch((err) => {
-          console.warn(err);
-        })
-        .finally(() => {
-          this.isFieldLoading = false;
-        });
+      // getProductDetails(
+      //   this.$axios,
+      //   this.selectedCategoryData[this.selectedProductId].id
+      // )
+      //   .then(({ data }) => {
+      //     if (data.field.length > 0) {
+      //       this.productFieldDesc = data.field;
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.warn(err);
+      //   })
+      //   .finally(() => {
+      //     this.isFieldLoading = false;
+      //   });
     },
   },
 };

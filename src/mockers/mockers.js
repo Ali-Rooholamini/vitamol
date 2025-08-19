@@ -7,14 +7,14 @@ export const getBlogList = [
       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
   },
   {
-    id: 0,
+    id: 1,
     images: ["/images/header-image.png", "/images/about-us.jpg"],
     title: "مقاله تست شماره دوم",
     description:
       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
   },
   {
-    id: 0,
+    id: 2,
     images: ["/images/about-us.jpg", "/images/header-image.png"],
     title: "مقاله تست شماره سوم برای آخرین تست",
     description:
@@ -34,3 +34,44 @@ export const getPostDetails = {
     "/images/header-image.png",
   ],
 };
+
+export const getSubCategories = [
+  {
+    id: 0,
+    image: "/images/about-us.jpg",
+    name: "محصولات مو",
+  },
+  {
+    id: 1,
+    image: "/images/header-image.png",
+    name: "محصولات ژله ای پوست",
+  },
+  {
+    id: 2,
+    image: "/images/about-us.jpg",
+    name: "محصولات مو",
+  },
+  {
+    id: 3,
+    image: "/images/header-image.png",
+    name: "محصولات ژله ای پوست",
+  },
+];
+
+export const getProductList = [
+  {
+    id: 0,
+    images: [{ image: "/images/cream-sample.webp" }],
+    name: "بستنی مو",
+  },
+  {
+    id: 1,
+    images: [{ image: "/images/cream-sample.webp" }],
+    name: "شامپو مو",
+  },
+  {
+    id: 2,
+    images: [{ image: "/images/cream-sample.webp" }],
+    name: "شامپو بدن",
+  },
+];

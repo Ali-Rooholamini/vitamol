@@ -5,7 +5,10 @@
       <div class="product-details_details-desc">
         <strong>{{ productDetail.name }}</strong>
         <p>
-          {{ productDetail.description }}
+          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم
+          متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با
+          تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با تولید سادگی
+          نامفهوم از صنعت چاپ
         </p>
         <div class="product-details_details-desc_btns">
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">
@@ -39,7 +42,7 @@
     <div class="product-details_image">
       <NuxtImg
         v-if="productDetail?.images[0]?.image"
-        :src="apiOriginProtocol + productDetail.images[0].image"
+        :src="productDetail.images[0].image"
         format="webp"
         width="350"
         loading="lazy"

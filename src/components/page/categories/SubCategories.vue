@@ -5,7 +5,7 @@
       :key="cat.id"
       class="sub-categories_category"
       :class="{ active: activeCats === cat.id }"
-      :style="`background-image: url(${apiOriginProtocol + cat.image})`"
+      :style="{ 'background-image': 'url(' + cat.image + ')' }"
       @click="setActive(cat.id)"
     >
       <div class="sub-categories_category-filter"></div>

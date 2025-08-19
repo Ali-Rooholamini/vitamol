@@ -8,7 +8,7 @@
       <div class="carousel__item">
         <NuxtImg
           v-if="product?.images[0]?.image"
-          :src="apiOriginProtocol + product.images[0].image"
+          :src="product.images[0].image"
           format="webp"
           :alt="product.name"
           loading="lazy"
