@@ -10,7 +10,6 @@
     />
 
     <PageTitle class="blog-page_title">مقالات مفید ویتامول</PageTitle>
-
     <section class="container blog-page_post-wrapper">
       <template v-if="!loading && blogList.length > 0">
         <div
@@ -24,7 +23,7 @@
             :class="{ 'blue-bg': post.id % 2 === 0 }"
           >
             <NuxtImg
-              :src="apiOriginProtocol + post?.images[0]?.resized_image"
+              :src="post?.images[0]"
               format="webp"
               width="237"
               height="330"
@@ -56,6 +55,7 @@
 
 <script>
 import { getBlogList } from "~/services/blog.js";
+import { getBlogList as mockBlogList } from "~/mockers/mockers";
 import PageTitle from "~/components/common/PageTitle.vue";
 
 export default {
@@ -66,26 +66,26 @@ export default {
 
   data() {
     return {
-      blogList: [],
+      blogList: mockBlogList || [],
       loading: false,
     };
   },
 
-  created() {
-    this.loading = true;
+  // created() {
+  //   this.loading = true;
 
-    getBlogList(this.$axios)
-      .then(({ data }) => {
-        this.blogList = JSON.parse(JSON.stringify(data));
-        console.log(this.blogList);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        this.loading = false;
-      });
-  },
+  //   getBlogList(this.$axios)
+  //     .then(({ data }) => {
+  //       this.blogList = JSON.parse(JSON.stringify(data));
+  //       console.log(this.blogList);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  //     .finally(() => {
+  //       this.loading = false;
+  //     });
+  // },
 
   computed: {
     apiOriginProtocol() {
