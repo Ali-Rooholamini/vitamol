@@ -3,7 +3,7 @@
     <div class="modal-dialog" :class="{ 'modal-lg': size === 'lg' }">
       <div class="modal-content">
         <div class="modal-body">
-          <div class="modal_brand-logo text-center">
+          <div v-if="hasBrandName" class="modal_brand-logo text-center">
             <NuxtImg
               src="/images/vitamol-brand-2.png"
               width="583"
@@ -33,6 +33,12 @@ export default {
     modalName: {
       type: String,
       required: true,
+    },
+
+    hasBrandName: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
 };

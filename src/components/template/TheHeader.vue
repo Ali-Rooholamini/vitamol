@@ -114,11 +114,11 @@
 
         <!-- login and serach buttons -->
         <div class="header_btn-wrapper">
-          <button class="btn me-2 mb-1 d-none" type="button">
+          <button class="btn me-2 mb-1" type="button">
             <nuxt-icon class="header_btn-search" name="vit--search" filled />
             <span class="d-none d-lg-inline-block">جست و جو</span>
           </button>
-          <button
+          <!-- <button
             class="btn me-2 login mb-1"
             type="button"
             data-bs-toggle="modal"
@@ -126,6 +126,15 @@
           >
             <nuxt-icon name="vit--profile" filled />
             <span class="d-none d-lg-inline-block">ثبت نام</span>
+          </button> -->
+          <button
+            class="btn me-2 basket mb-1"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#basketModal"
+          >
+            <nuxt-icon name="vit--basket" filled />
+            <span class="d-none d-lg-inline-block">سبد خرید</span>
           </button>
         </div>
       </div>

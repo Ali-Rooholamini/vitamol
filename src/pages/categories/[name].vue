@@ -147,7 +147,7 @@ import PageTitle from "~/components/common/PageTitle.vue";
 import SubCategories from "~/components/page/categories/SubCategories.vue";
 import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 import ProductDetails from "~/components/page/categories/ProductDetails.vue";
-import BaseModal from "~/components/common/BaseModal.vue";
+import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 
 import {

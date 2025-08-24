@@ -43,7 +43,7 @@
 
 <script>
 import { registerUser } from "~/services/accounting.js";
-import BaseModal from "~/components/common/BaseModal.vue";
+import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 import BaseFormTextInput from "~/components/global/BaseFormTextInput.vue";
 

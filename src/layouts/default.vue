@@ -1,6 +1,7 @@
 <template>
   <div>
     <LoginModal />
+    <BasketModal />
     <TheHeader />
     <div
       class="layout_upside-gradient"
@@ -15,6 +16,7 @@
 import TheHeader from "~/components/template/TheHeader.vue";
 import TheFooter from "~/components/template/TheFooter.vue";
 import LoginModal from "~/components/common/LoginModal.vue";
+import BasketModal from "~/components/common/BasketModal.vue";
 
 export default {
   name: "DefaultLayout",
@@ -22,6 +24,7 @@ export default {
     TheHeader,
     TheFooter,
     LoginModal,
+    BasketModal,
   },
 
   data() {
