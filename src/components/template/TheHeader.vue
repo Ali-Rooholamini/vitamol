@@ -152,9 +152,11 @@ const route = useRoute();
 watch(
   () => route,
   (to) => {
+    console.log(to);
+
     currentPath.value = to.name;
   },
-  { immediate: true }
+  { immediate: true, deep: true }
 );
 
 // function handleScroll() {
