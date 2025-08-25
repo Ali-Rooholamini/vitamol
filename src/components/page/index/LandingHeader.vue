@@ -164,26 +164,9 @@ export default defineComponent({
 
   data() {
     return {
-      isLoading: true,
+      isLoading: false,
       eventDetails: null,
     };
-  },
-
-  created() {
-    this.isLoading = true;
-
-    getEvent(this.$axios)
-      .then(({ data }) => {
-        if (data.description.length > 0 && data.images.length > 0) {
-          this.eventDetails = JSON.parse(JSON.stringify(data));
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
   },
 });
 </script>

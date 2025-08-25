@@ -1,14 +1,8 @@
 import axios from "axios";
 
-let protocol = "https:";
-
-if(process.browser){
-  protocol = window.location.protocol;
-}
-
 export default defineNuxtPlugin(() => {
   let api = axios.create({
-    baseURL : `${protocol}//api.vitamolcare.com`,
+    baseURL : `http://localhost:5000`,
     headers: {
       "Content-Type": "application/json",
     },

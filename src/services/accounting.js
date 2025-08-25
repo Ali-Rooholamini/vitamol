@@ -1,14 +1,24 @@
-export function registerUser(axios, name, last_name, phone, description) {
+export function registerUser(axios, email, password, phoneNumber) {
   const data = {
-    name,
-    last_name,
-    phone,
-    description,
+    email,
+    password,
+    phone_number: phoneNumber,
   };
 
-  return axios.post(`/register/`, data);
+  return axios.post(`/register`, data);
+}
+
+export function loginUser(axios, email, password, phoneNumber) {
+  const data = {
+    email,
+    password,
+    phone_number: phoneNumber,
+  };
+
+  return axios.post(`/login`, data);
 }
 
 export default {
   registerUser,
+  loginUser,
 };

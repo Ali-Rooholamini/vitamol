@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { registerUser } from "~/services/accounting.js";
+import { loginUser, registerUser } from "~/services/accounting.js";
 import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 import BaseFormTextInput from "~/components/global/BaseFormTextInput.vue";
@@ -121,7 +121,9 @@ export default {
       this.isLoading = true;
 
       registerUser(this.$axios, this.email, this.password, this.phoneNumber)
-        .then((res) => {
+        .then(({ data }) => {
+          console.log(data);
+
           alert("ثبت نام با موفقیت انجام شد");
         })
         .catch((res) => {
@@ -133,6 +135,35 @@ export default {
           this.email = "";
           this.phoneNumber = "";
           this.isLoading = false;
+          location.reload();
+        });
+    },
+
+    loginUser() {
+      if (
+        this.email.length === 0 ||
+        this.password.length === 0 ||
+        this.phoneNumber.length === 0
+      ) {
+        return;
+      }
+
+      this.isLoading = true;
+
+      loginUser(this.$axios, this.password, this.phoneNumber)
+        .then((res) => {
+          alert(" ورود با موفقیت انجام شد");
+        })
+        .catch((res) => {
+          console.error(res);
+          alert("مشکلی رخ داده است");
+        })
+        .finally(() => {
+          this.password = "";
+          this.email = "";
+          this.phoneNumber = "";
+          this.isLoading = false;
+          location.reload();
         });
     },
   },
