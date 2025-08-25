@@ -54,7 +54,7 @@
         <SubCategories
           class="container"
           :categoryList="subCategories"
-          @activeCategory="getProductList"
+          @activeCategory="getProductListMethod"
         />
       </template>
       <div class="category-page_category_bottom-color"></div>
@@ -124,7 +124,6 @@
         </div>
       </template>
     </section>
-
     <section
       v-if="selectedProductId !== null && productData !== null"
       class="container category-page_product-details"
@@ -214,7 +213,7 @@ export default {
 
     getSubCategories(this.$axios, categoriesId)
       .then(({ data }) => {
-        this.subCategories = JSON.parse(JSON.stringify(data));
+        this.subCategories = data;
       })
       .catch((err) => {
         console.log(err);
@@ -248,12 +247,12 @@ export default {
     },
     productData() {
       if (this.selectedProductId !== null) {
-        const { name, images, description } =
+        const { name, image, desc } =
           this.selectedCategoryData[this.selectedProductId];
         return {
           name,
-          images,
-          description,
+          image,
+          desc,
         };
       }
 
@@ -262,23 +261,19 @@ export default {
   },
 
   methods: {
-    async getProductList(event) {
+    async getProductListMethod(event) {
       this.selectedCategoryId = null;
-      // this.isProductsLoding = true;
+      this.isProductsLoding = true;
       this.selectedCategoryId = event;
 
-      // const { data, error } = await getProductList(
-      //   this.$axios,
-      //   this.selectedCategoryId
-      // );
+      const { data, error } = await getProductList(
+        this.$axios,
+        this.selectedCategoryId
+      );
 
-      // if (data.length !== 0) {
-      //   this.selectedCategoryData = JSON.parse(JSON.stringify(data));
-      // } else {
-      //   this.selectedCategoryData = null;
-      // }
+      this.selectedCategoryData = data;
 
-      // this.isProductsLoding = false;
+      this.isProductsLoding = false;
 
       this.$refs.carouselView.scrollIntoView({ behavior: "smooth" });
     },

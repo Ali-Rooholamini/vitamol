@@ -7,13 +7,15 @@
     <Slide v-for="(product, index) in productList" :id="index" :key="index">
       <div class="carousel__item">
         <NuxtImg
-          v-if="product?.images[0]?.image"
-          :src="product.images[0].image"
+          v-if="product?.image"
+          :src="product.image"
           format="webp"
           :alt="product.name"
           loading="lazy"
         />
-        <div class="carousel__item_title">{{ product.name }}</div>
+        <div class="carousel__item_title">
+          {{ product.name }} _ {{ product.price }} تومان
+        </div>
       </div>
     </Slide>
 

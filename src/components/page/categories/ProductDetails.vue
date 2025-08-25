@@ -41,8 +41,8 @@
     </div>
     <div class="product-details_image">
       <NuxtImg
-        v-if="productDetail?.images[0]?.image"
-        :src="productDetail.images[0].image"
+        v-if="productDetail.image"
+        :src="productDetail.image"
         format="webp"
         width="350"
         loading="lazy"
