@@ -159,17 +159,17 @@ watch(
   { immediate: true, deep: true }
 );
 
-// function handleScroll() {
-//   isSticky.value = window.scrollY > 20;
-// }
+function handleScroll() {
+  isSticky.value = window.scrollY > 20;
+}
 
-// onMounted(() => {
-//   window.addEventListener("scroll", handleScroll);
-// });
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
 
-// onUnmounted(() => {
-//   window.removeEventListener("scroll", this.handleScroll);
-// });
+onUnmounted(() => {
+  window.removeEventListener("scroll", this.handleScroll);
+});
 </script>
 
 <style lang="scss" scoped>

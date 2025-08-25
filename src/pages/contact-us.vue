@@ -81,7 +81,7 @@
             validation-type="phoneNumber"
             :regex="/^(\+98|0)?9\d{9}$/"
             :min="11"
-            :max="11"
+            max="11"
           />
           <BaseFormTextInput
             class="contact-us_form-input mb-4"
@@ -153,7 +153,7 @@
           validation-type="phoneNumber"
           :regex="/^(\+98|0)?9\d{9}$/"
           :min="11"
-          :max="11"
+          max="11"
         />
         <BaseFormTextInput
           class="contact-us_form-input w-100"

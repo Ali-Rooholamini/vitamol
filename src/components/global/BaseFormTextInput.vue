@@ -48,7 +48,7 @@ export default {
       default: 1,
     },
     max: {
-      type: Number,
+      type: [Number, String],
       required: false,
       default: 100,
     },

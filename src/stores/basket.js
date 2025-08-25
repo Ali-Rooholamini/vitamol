@@ -7,6 +7,8 @@ export const useBasketStore = defineStore("basket", {
 
   actions: {
     SET_Basket_Item(item) {
+      console.log(item);
+      
       this.basketItems.push(item);
     },
   },
