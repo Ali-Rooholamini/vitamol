@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     dirs : [],
   },
 
+  ssr : false,
+
   modules : ["nuxt-icons" , '@nuxt/image', '@pinia/nuxt'],
 
   image : {

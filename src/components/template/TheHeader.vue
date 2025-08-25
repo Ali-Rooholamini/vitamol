@@ -128,7 +128,7 @@
             <span class="d-none d-lg-inline-block">سبد خرید</span>
           </button>
           <button
-            v-if="getIsLoggedin"
+            v-if="!getIsLoggedin"
             class="btn me-2 login mb-1"
             type="button"
             data-bs-toggle="modal"
@@ -141,7 +141,7 @@
             v-else
             class="btn me-2 login mb-1"
             type="button"
-            @click="REMOVE_LOGIN_STATE()"
+            @click="() => REMOVE_LOGIN_STATE()"
           >
             <nuxt-icon name="vit--logout" filled />
             <span class="d-none d-lg-inline-block">خروج</span>
@@ -173,17 +173,17 @@ watch(
   { immediate: true }
 );
 
-function handleScroll() {
-  isSticky.value = window.scrollY > 20;
-}
+// function handleScroll() {
+//   isSticky.value = window.scrollY > 20;
+// }
 
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
+// onMounted(() => {
+//   window.addEventListener("scroll", handleScroll);
+// });
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", this.handleScroll);
-});
+// onUnmounted(() => {
+//   window.removeEventListener("scroll", this.handleScroll);
+// });
 </script>
 
 <style lang="scss" scoped>

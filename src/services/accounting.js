@@ -8,9 +8,8 @@ export function registerUser(axios, email, password, phoneNumber) {
   return axios.post(`/register`, data);
 }
 
-export function loginUser(axios, email, password, phoneNumber) {
+export function loginUser(axios, password, phoneNumber) {
   const data = {
-    email,
     password,
     phone_number: phoneNumber,
   };

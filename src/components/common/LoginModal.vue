@@ -5,16 +5,10 @@
 
       <div class="w-100 d-flex mb-5 gap-3">
         <BaseButton class="w-100" @click="loginState = 'login'">
-          <div v-if="isLoading" class="spinner-border">
-            <span class="sr-only"></span>
-          </div>
-          <span v-else>ورود</span>
+          <span>ورود</span>
         </BaseButton>
         <BaseButton class="w-100" @click="loginState = 'register'">
-          <div v-if="isLoading" class="spinner-border">
-            <span class="sr-only"></span>
-          </div>
-          <span v-else>ثبت نام</span>
+          <span>ثبت نام</span>
         </BaseButton>
       </div>
 
@@ -73,7 +67,7 @@
           v-model:value="password"
           :min="8"
         />
-        <BaseButton @click="registerUser">
+        <BaseButton @click="login">
           <div v-if="isLoading" class="spinner-border">
             <span class="sr-only"></span>
           </div>
@@ -89,6 +83,8 @@ import { loginUser, registerUser } from "~/services/accounting.js";
 import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 import BaseFormTextInput from "~/components/global/BaseFormTextInput.vue";
+import { useAuthStore } from "~/stores/auth.js";
+const { SET_USER_TOKEN } = useAuthStore();
 
 export default {
   name: "LoginModal",
@@ -122,8 +118,6 @@ export default {
 
       registerUser(this.$axios, this.email, this.password, this.phoneNumber)
         .then(({ data }) => {
-          console.log(data);
-
           alert("ثبت نام با موفقیت انجام شد");
         })
         .catch((res) => {
@@ -135,24 +129,22 @@ export default {
           this.email = "";
           this.phoneNumber = "";
           this.isLoading = false;
-          location.reload();
+          this.$refs.loginModal.closeModal();
         });
     },
 
-    loginUser() {
-      if (
-        this.email.length === 0 ||
-        this.password.length === 0 ||
-        this.phoneNumber.length === 0
-      ) {
+    login() {
+      if (this.password.length === 0 || this.phoneNumber.length === 0) {
         return;
       }
 
       this.isLoading = true;
 
       loginUser(this.$axios, this.password, this.phoneNumber)
-        .then((res) => {
+        .then(({ data }) => {
+          console.log(data);
           alert(" ورود با موفقیت انجام شد");
+          SET_USER_TOKEN(data.token);
         })
         .catch((res) => {
           console.error(res);
@@ -160,7 +152,6 @@ export default {
         })
         .finally(() => {
           this.password = "";
-          this.email = "";
           this.phoneNumber = "";
           this.isLoading = false;
           location.reload();
