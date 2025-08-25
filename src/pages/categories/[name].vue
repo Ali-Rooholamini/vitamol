@@ -212,16 +212,16 @@ export default {
         break;
     }
 
-    // getSubCategories(this.$axios, categoriesId)
-    //   .then(({ data }) => {
-    //     this.subCategories = JSON.parse(JSON.stringify(data));
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .finally(() => {
-    //     this.isCatLoading = false;
-    //   });
+    getSubCategories(this.$axios, categoriesId)
+      .then(({ data }) => {
+        this.subCategories = JSON.parse(JSON.stringify(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        this.isCatLoading = false;
+      });
   },
 
   computed: {

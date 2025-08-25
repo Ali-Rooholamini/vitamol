@@ -27,50 +27,16 @@
           >
             ویتامول
           </NuxtLink>
-          <div class="dropdown-wrapper">
-            <a
-              class="menu-dropdown"
-              :class="{ active: currentPath === 'cat' }"
-              data-bs-toggle="collapse"
-              href="#collapseExample"
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-            >
-              محصولات
-            </a>
-            <div class="collapse" id="collapseExample">
-              <ul class="nav">
-                <li class="nav-item">
-                  <NuxtLink
-                    class="nav-link"
-                    to="/categories/mane-guard"
-                    @click="toggleOffcanvas"
-                  >
-                    محصولات مراقبت از مو
-                  </NuxtLink>
-                </li>
-                <li class="nav-item">
-                  <NuxtLink
-                    class="nav-link"
-                    to="/categories/skin-care"
-                    @click="toggleOffcanvas"
-                  >
-                    محصولات مراقبت از پوست
-                  </NuxtLink>
-                </li>
-                <li class="nav-item">
-                  <NuxtLink
-                    class="nav-link"
-                    to="/categories/hue-harmony"
-                    @click="toggleOffcanvas"
-                  >
-                    رنگ مو
-                  </NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </div>
+
+          <NuxtLink
+            class="menu-link"
+            :class="{ active: currentPath === '/categories/mane-guard' }"
+            aria-current="page"
+            to="/categories/mane-guard"
+            @click="toggleOffcanvas"
+          >
+            محصولات
+          </NuxtLink>
 
           <NuxtLink
             class="menu-link"

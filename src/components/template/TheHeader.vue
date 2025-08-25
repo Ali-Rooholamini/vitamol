@@ -34,35 +34,14 @@
             </NuxtLink>
           </li>
 
-          <li class="nav-item dropdown">
-            <a
+          <li class="nav-item">
+            <NuxtLink
               class="nav-link"
-              :class="{
-                active: currentPath === 'categories-name',
-              }"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              :class="{ active: currentPath === '/categories/mane-guard' }"
+              to="/categories/mane-guard"
             >
               محصولات
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <NuxtLink class="nav-link" to="/categories/mane-guard">
-                  محصولات مراقبت از مو
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink class="nav-link" to="/categories/skin-care">
-                  محصولات مراقبت از پوست
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink class="nav-link" to="/categories/hue-harmony">
-                  رنگ مو
-                </NuxtLink>
-              </li>
-            </ul>
+            </NuxtLink>
           </li>
 
           <li class="nav-item">
@@ -141,7 +120,12 @@
             v-else
             class="btn me-2 login mb-1"
             type="button"
-            @click="() => REMOVE_LOGIN_STATE()"
+            @click="
+              () => {
+                REMOVE_LOGIN_STATE();
+                location.reload();
+              }
+            "
           >
             <nuxt-icon name="vit--logout" filled />
             <span class="d-none d-lg-inline-block">خروج</span>

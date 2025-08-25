@@ -1,5 +1,5 @@
 export function getSubCategories(axios, cat_id) {
-  return axios.get(`/product/subcategory/${cat_id}/`);
+  return axios.get(`/categories`);
 }
 
 export function getProductList(axios, SUB_CAT_ID) {
