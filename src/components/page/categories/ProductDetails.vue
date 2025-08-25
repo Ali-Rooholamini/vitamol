@@ -5,10 +5,7 @@
       <div class="product-details_details-desc">
         <strong>{{ productDetail.name }}</strong>
         <p>
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم
-          متن ساختگی با تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با
-          تولید سادگی نامفهوم از صنعت چاپلورم ایپسوم متن ساختگی با تولید سادگی
-          نامفهوم از صنعت چاپ
+          {{ productDetail.desc }}
         </p>
         <div class="product-details_details-desc_btns">
           <BaseButton :isSvgLeft="true" arrowSvgName="vit--arrow-left-top">

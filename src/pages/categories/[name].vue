@@ -16,11 +16,8 @@
             <span class="sr-only"></span>
           </div>
         </div>
-        <p v-else-if="!isFieldLoading && productFieldDesc.length > 0">
-          {{ productFieldDesc }}
-        </p>
-        <p v-else>
-          {{ productData.description }}
+        <p>
+          {{ productData.desc }}
         </p>
 
         <div class="body-contet_button-wrapper">
@@ -30,10 +27,14 @@
           <BaseButton class="body-contet_button-close" data-bs-dismiss="modal">
             بستن توضحات
           </BaseButton>
-          <BaseButton @click="addTo" data-bs-dismiss="modal">
-            افزودن به سبد خرید
-          </BaseButton>
         </div>
+        <BaseButton
+          class="w-100 mt-4"
+          @click="addTo(productData)"
+          data-bs-dismiss="modal"
+        >
+          افزودن به سبد خرید
+        </BaseButton>
       </div>
     </BaseModal>
 
@@ -302,9 +303,10 @@ export default {
       //   });
     },
 
-    addTo() {
+    addTo(data) {
       const { SET_Basket_Item } = useBasketStore();
-      SET_Basket_Item(this.selectedCategoryData[this.selectedProductId]);
+      // console.log(data);
+      SET_Basket_Item(data);
     },
   },
 };

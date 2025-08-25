@@ -2,6 +2,7 @@
   <BaseModal ref="basketModal" modalName="basketModal" :has-brand-name="false">
     <div class="login-modal_body">
       <b>محصولات داخل سبد خرید شما</b>
+
       <div v-if="basketItems.length === 0" class="alert" role="alert">
         محصولی یافت نشد
       </div>
@@ -11,7 +12,8 @@
           v-for="(item, index) in basketItems"
           :key="index"
         >
-          <NuxtImg :src="item.images[0].image" width="60px" height="60px" />
+          <!-- {{ item }} -->
+          <NuxtImg :src="item.image" width="60px" height="60px" />
           <span>{{ item.name }}</span>
         </div>
       </div>
@@ -23,7 +25,7 @@
 import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 
-import { useBasketStore } from "#imports";
+import { useBasketStore } from "~/stores/basket";
 
 const store = useBasketStore();
 
