@@ -13,8 +13,8 @@
           <NuxtLink class="navbar-brand" to="/">
             <NuxtImg
               class="header_brand-logo"
-              width="238"
-              height="33"
+              width="200"
+              height="26"
               format="webp"
               src="/images/vitamol-brand.png"
               alt="vitamol"
@@ -118,15 +118,6 @@
             <nuxt-icon class="header_btn-search" name="vit--search" filled />
             <span class="d-none d-lg-inline-block">جست و جو</span>
           </button>
-          <!-- <button
-            class="btn me-2 login mb-1"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
-          >
-            <nuxt-icon name="vit--profile" filled />
-            <span class="d-none d-lg-inline-block">ثبت نام</span>
-          </button> -->
           <button
             class="btn me-2 basket mb-1"
             type="button"
@@ -136,54 +127,63 @@
             <nuxt-icon name="vit--basket" filled />
             <span class="d-none d-lg-inline-block">سبد خرید</span>
           </button>
+          <button
+            v-if="!getIsLoggedin"
+            class="btn me-2 login mb-1"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            <nuxt-icon name="vit--profile" filled />
+            <span class="d-none d-lg-inline-block">ثبت نام</span>
+          </button>
+          <button
+            v-else
+            class="btn me-2 login mb-1"
+            type="button"
+            @click="REMOVE_LOGIN_STATE()"
+          >
+            <nuxt-icon name="vit--logout" filled />
+            <span class="d-none d-lg-inline-block">خروج</span>
+          </button>
         </div>
       </div>
     </nav>
   </header>
 </template>
 
-<script>
+<script setup>
+import { storeToRefs } from "pinia";
 import OffCanvasMenu from "../common/OffCanvasMenu.vue";
+import { useAuthStore } from "~/stores/auth";
 
-export default {
-  name: "TheHeader",
+const store = useAuthStore();
+const { REMOVE_LOGIN_STATE } = store;
+const { getIsLoggedin } = storeToRefs(store);
 
-  components: {
-    OffCanvasMenu,
+const isSticky = ref(false);
+const currentPath = ref("index");
+
+const route = useRoute();
+watch(
+  () => route,
+  (to) => {
+    currentPath.value = to.name;
   },
+  { immediate: true }
+);
 
-  data() {
-    return {
-      isSticky: false,
-      currentPath: "index",
-    };
-  },
+function handleScroll() {
+  isSticky.value = window.scrollY > 20;
+}
 
-  mounted() {
-    if (process.client) {
-      window.addEventListener("scroll", this.handleScroll);
-    }
-  },
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
 
-  watch: {
-    $route: {
-      immediate: true,
-      handler(to) {
-        this.currentPath = to.name;
-      },
-    },
-  },
-
-  methods: {
-    handleScroll() {
-      this.isSticky = window.scrollY > 20;
-    },
-  },
-
-  unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-};
+onUnmounted(() => {
+  window.removeEventListener("scroll", this.handleScroll);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -199,12 +199,12 @@ header.sticky-menu {
 }
 
 .header_brand-logo {
-  width: 172px;
-  height: 24px;
+  width: 152px;
+  height: 20px;
 
   @include breakpoint-up(sm) {
-    width: 238px;
-    height: 33px;
+    width: 200px;
+    height: 30px;
   }
 }
 

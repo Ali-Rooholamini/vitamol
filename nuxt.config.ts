@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     dirs : [],
   },
 
-  modules : ["nuxt-icons" , '@nuxt/image'],
+  modules : ["nuxt-icons" , '@nuxt/image', '@pinia/nuxt'],
 
   image : {
     quality : 80,
@@ -22,6 +22,10 @@ export default defineNuxtConfig({
       'xxl': 1536,
       '2xl': 1536
     },
+  },
+
+  pinia : {
+    storesDirs: ["./src/stores"],
   },
 
   css: [
