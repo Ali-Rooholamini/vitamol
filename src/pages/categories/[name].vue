@@ -25,10 +25,13 @@
 
         <div class="body-contet_button-wrapper">
           <BaseButton data-bs-dismiss="modal">
-            <NuxtLink to="/order">ثبت سفارش محصول</NuxtLink>
+            <NuxtLink to="/order">ثبت سفارش عمده</NuxtLink>
           </BaseButton>
           <BaseButton class="body-contet_button-close" data-bs-dismiss="modal">
             بستن توضحات
+          </BaseButton>
+          <BaseButton @click="addTo" data-bs-dismiss="modal">
+            افزودن به سبد خرید
           </BaseButton>
         </div>
       </div>
@@ -149,6 +152,7 @@ import ProductCarousel from "~/components/page/categories/ProductCarousel.vue";
 import ProductDetails from "~/components/page/categories/ProductDetails.vue";
 import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
+import { useBasketStore } from "~/stores/basket.js";
 
 import {
   getSubCategories as mockSubcategories,
@@ -301,6 +305,11 @@ export default {
       //   .finally(() => {
       //     this.isFieldLoading = false;
       //   });
+    },
+
+    addTo() {
+      const { SET_Basket_Item } = useBasketStore();
+      SET_Basket_Item(this.selectedCategoryData[this.selectedProductId]);
     },
   },
 };

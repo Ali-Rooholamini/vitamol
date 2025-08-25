@@ -2,28 +2,32 @@
   <BaseModal ref="basketModal" modalName="basketModal" :has-brand-name="false">
     <div class="login-modal_body">
       <b>محصولات داخل سبد خرید شما</b>
-      <div class="alert" role="alert">محصولی یافت نشد</div>
+      <div v-if="basketItems.length === 0" class="alert" role="alert">
+        محصولی یافت نشد
+      </div>
+      <div v-else>
+        <div
+          class="d-flex w-100 align-items-center justify-content-start gap-3 mb-3"
+          v-for="(item, index) in basketItems"
+          :key="index"
+        >
+          <NuxtImg :src="item.images[0].image" width="60px" height="60px" />
+          <span>{{ item.name }}</span>
+        </div>
+      </div>
     </div>
   </BaseModal>
 </template>
 
-<script>
+<script setup>
 import BaseModal from "~/components/global/BaseModal.vue";
 import BaseButton from "~/components/global/BaseButton.vue";
 
-export default {
-  name: "LoginModal",
-  components: {
-    BaseModal,
-    BaseButton,
-  },
+import { useBasketStore } from "#imports";
 
-  data() {
-    return {
-      isLoading: false,
-    };
-  },
-};
+const store = useBasketStore();
+
+const { basketItems } = storeToRefs(store);
 </script>
 
 <style lang="scss" scoped>
