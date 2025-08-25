@@ -128,7 +128,7 @@
             <span class="d-none d-lg-inline-block">سبد خرید</span>
           </button>
           <button
-            v-if="!getIsLoggedin"
+            v-if="getIsLoggedin"
             class="btn me-2 login mb-1"
             type="button"
             data-bs-toggle="modal"

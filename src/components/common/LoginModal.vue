@@ -2,19 +2,27 @@
   <BaseModal ref="loginModal" modalName="loginModal">
     <div class="login-modal_body">
       <b>اطلاعات خود را وارد کنید.</b>
-      <form @submit.prevent class="login-modal_body-form">
-        <BaseFormTextInput
-          class="contact-us_form-input"
-          placeholder="نام :"
-          v-model:value="firstName"
-          :min="5"
-        />
-        <BaseFormTextInput
-          class="contact-us_form-input"
-          placeholder="نام خانوادگی :"
-          v-model:value="lastName"
-          :min="5"
-        />
+
+      <div class="w-100 d-flex mb-5 gap-3">
+        <BaseButton class="w-100" @click="loginState = 'login'">
+          <div v-if="isLoading" class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+          <span v-else>ورود</span>
+        </BaseButton>
+        <BaseButton class="w-100" @click="loginState = 'register'">
+          <div v-if="isLoading" class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+          <span v-else>ثبت نام</span>
+        </BaseButton>
+      </div>
+
+      <form
+        v-if="loginState === 'register'"
+        @submit.prevent
+        class="login-modal_body-form"
+      >
         <BaseFormTextInput
           class="contact-us_form-input"
           placeholder="شماره تماس:"
@@ -25,16 +33,51 @@
           :max="11"
         />
         <BaseFormTextInput
-          class="contact-us_form-input"
-          placeholder="توضیحات(اختیاری):"
-          v-model:value="description"
-          :min="5"
+          class="contact-us_form-input mb-4"
+          placeholder="ایمیل:"
+          v-model:value="email"
+          validation-type="email"
+          :regex="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/"
         />
-        <BaseButton @click="registerUser" data-bs-dismiss="modal">
+        <BaseFormTextInput
+          class="contact-us_form-input mb-4"
+          placeholder="پسورد:"
+          v-model:value="password"
+          :min="8"
+        />
+        <BaseButton @click="registerUser">
           <div v-if="isLoading" class="spinner-border">
             <span class="sr-only"></span>
           </div>
-          <span v-else>ارسال</span>
+          <span v-else>ثبت نام</span>
+        </BaseButton>
+      </form>
+
+      <form
+        v-else="loginState === 'login'"
+        @submit.prevent
+        class="login-modal_body-form"
+      >
+        <BaseFormTextInput
+          class="contact-us_form-input"
+          placeholder="شماره تماس:"
+          v-model:value="phoneNumber"
+          validation-type="phoneNumber"
+          :regex="/^(\+98|0)?9\d{9}$/"
+          :min="11"
+          :max="11"
+        />
+        <BaseFormTextInput
+          class="contact-us_form-input mb-4"
+          placeholder="پسورد:"
+          v-model:value="password"
+          :min="8"
+        />
+        <BaseButton @click="registerUser">
+          <div v-if="isLoading" class="spinner-border">
+            <span class="sr-only"></span>
+          </div>
+          <span v-else>وارد شوید</span>
         </BaseButton>
       </form>
     </div>
@@ -57,19 +100,19 @@ export default {
 
   data() {
     return {
+      loginState: "login",
       isLoading: false,
-      firstName: "",
-      lastName: "",
+      password: "",
+      email: "",
       phoneNumber: "",
-      description: "",
     };
   },
 
   methods: {
     registerUser() {
       if (
-        this.firstName.length === 0 ||
-        this.lastName.length === 0 ||
+        this.email.length === 0 ||
+        this.password.length === 0 ||
         this.phoneNumber.length === 0
       ) {
         return;
@@ -77,13 +120,7 @@ export default {
 
       this.isLoading = true;
 
-      registerUser(
-        this.$axios,
-        this.firstName,
-        this.lastName,
-        this.phoneNumber,
-        this.description
-      )
+      registerUser(this.$axios, this.email, this.password, this.phoneNumber)
         .then((res) => {
           alert("ثبت نام با موفقیت انجام شد");
         })
@@ -92,10 +129,9 @@ export default {
           alert("مشکلی رخ داده است");
         })
         .finally(() => {
-          this.firstName = "";
-          this.lastName = "";
+          this.password = "";
+          this.email = "";
           this.phoneNumber = "";
-          this.description = "";
           this.isLoading = false;
         });
     },
