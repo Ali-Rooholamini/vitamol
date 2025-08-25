@@ -23,15 +23,16 @@
             :class="{ 'blue-bg': post.id % 2 === 0 }"
           >
             <NuxtImg
-              :src="post?.images[0]"
+              v-if="post?.images || post?.image"
+              :src="post?.images || post?.image || unde"
               format="webp"
               width="237"
               height="330"
             />
           </div>
           <div class="blog-page_post_desc">
-            <b>{{ post.title }}</b>
-            <p>{{ post.description }}</p>
+            <b>{{ post.name }}</b>
+            <p>{{ post.post_desc }}</p>
           </div>
         </div>
       </template>
@@ -71,21 +72,22 @@ export default {
     };
   },
 
-  // created() {
-  //   this.loading = true;
+  created() {
+    this.loading = true;
 
-  //   getBlogList(this.$axios)
-  //     .then(({ data }) => {
-  //       this.blogList = JSON.parse(JSON.stringify(data));
-  //       console.log(this.blogList);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  //     .finally(() => {
-  //       this.loading = false;
-  //     });
-  // },
+    getBlogList(this.$axios)
+      .then(({ data }) => {
+        console.log(data);
+
+        this.blogList = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  },
 
   computed: {
     apiOriginProtocol() {

@@ -1,5 +1,5 @@
 export function getBlogList(axios) {
-  return axios.get(`/blog/list/`);
+  return axios.get(`/blogs`);
 }
 
 export function getBlogDetail(axios, id) {
